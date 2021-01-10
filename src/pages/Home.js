@@ -7,8 +7,8 @@ function Home() {
     const { user, logout } = useContext(AuthContext);
 
     return (
-        <div>
-            <button onClick={logout}>logout</button>
+        <div> 
+            <h1>home</h1>
         </div>
     )
 }
