@@ -3,10 +3,18 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { AuthContext } from '../context/auth';
 
-function AuthRoute({ component: Component, ...rest }) {
+
+function AuthRoute({ component: Component, redirectIfNotSignedIn, ...rest }) {
   const { user } = useContext(AuthContext);
 
-  return (
+  return redirectIfNotSignedIn ? (
+    <Route
+      {...rest}
+      render={(props) =>
+        user ? <Component {...props} /> : <Redirect to="/register" />
+      }
+    />
+  ) : (
     <Route
       {...rest}
       render={(props) =>

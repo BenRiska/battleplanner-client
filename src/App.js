@@ -10,7 +10,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-          <Route exact path="/" component={Home}/>
+          <AuthRoute exact redirectIfNotSignedIn path="/" component={Home} />
           <AuthRoute exact path="/login" component={Login} />
           <AuthRoute exact path="/register" component={Register} />
       </Router>
