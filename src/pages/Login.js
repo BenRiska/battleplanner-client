@@ -35,6 +35,8 @@ function Login(props) {
     loginUser();
   }
 
+  console.log(errors, loading)
+
     return (
         <div>
             <h1>Login</h1>

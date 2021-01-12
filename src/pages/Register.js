@@ -37,6 +37,8 @@ function Register(props) {
         addUser();
       }
 
+      console.log(errors, loading)
+
     return (
         <div>
             <h1>Register</h1>
@@ -82,16 +84,6 @@ function Register(props) {
         </div>
     )
 }
-
-const FETCH_TOURNAMENT = gql`
-  query($username: String!, $tournamentName: String!){
-  getTournament(username: $username, tournamentName: $tournamentName){
-    name
-    username
-    rules
-  }
-}
-`
 
 const REGISTER_USER = gql`
   mutation register(

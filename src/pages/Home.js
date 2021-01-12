@@ -12,7 +12,7 @@ function Home() {
 
     const { loading, error, data: { getTournaments: tournaments } = {}} = useQuery(FETCH_TOURNAMENTS_QUERY, {variables: { username: user.username}})
 
-    console.log(tournaments)
+    console.log(tournaments, error)
 
     return (
         <div> 
@@ -25,7 +25,7 @@ function Home() {
             : 
             (
                 <div>
-                {tournaments.map(tournament => <TournamentCard tournament={tournament}/>)
+                {tournaments.map(tournament => <TournamentCard key={tournament.name} tournament={tournament}/>)
                 }
                </div>
             )

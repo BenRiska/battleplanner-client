@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
@@ -19,6 +19,8 @@ function TournamentForm(props) {
         createTournament();
         }
       }
+
+      console.log(errors)
 
     return (
         <div>

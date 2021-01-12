@@ -1,74 +1,89 @@
-import React, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import gql from 'graphql-tag';
-import { useQuery } from '@apollo/react-hooks';
+import {useMutation, useQuery} from '@apollo/react-hooks';
 import { AuthContext } from '../context/auth';
+import Rules from '../components/Rules';
+import Restrictions from '../components/Restrictions';
+import Participants from '../components/Participants';
+import EditTournament from '../components/EditTournament';
+import { useParams, useHistory } from 'react-router-dom';
 
-function Tournament() {
 
-    const [rulesOpen, setRulesOpen] = useState(false)
-    const [restrictionsOpen, setRestrictionsOpen] = useState(false)
-    const [participantsOpen, setParticipantsOpen] = useState(false)
-    const [newRule, setNewRule] = useState("")
+function Tournament(props) {
 
     const { user } = useContext(AuthContext);
 
-    const { loading, error, data: { getTournament: tournament } = {}} = useQuery(FETCH_TOURNAMENT_QUERY, {variables: { username: user.username, tournamentName: "hello"}})
+    const history = useHistory()
+
+    const {id} = useParams
+
+    const { loading, error, data: { getTournament: tournament } = {}} = useQuery(FETCH_TOURNAMENT_QUERY, {variables: { username: user.username, tournamentName: id}})
+
+    const [deleteTournament] = useMutation(DELETE_TOURNAMENT_QUERY, {
+        update(){
+            props.history.push("/")
+        },
+        onError(err) {
+          console.log(err.graphQLErrors[0].extensions.exception.errors);
+        },
+        variables: {tournamentName: tournament?.name}
+    })
+
+    
+
+    console.log(error, loading)
 
 
     return (
         <div>
-            <h1>{tournament && tournament[0].name}</h1>
-            <div className="tournament__edit">
-                <div className="tournament__edit-tab">
-                    <h1 onClick={() => setRulesOpen(prev => !prev)}>Add Rule</h1>
-                    {rulesOpen && 
-                    <form>
-                        <input value={newRule} onChange={e => setNewRule(e.target.value)} placeholder="Rule.." name="rule" type="text"/>
-                        <button type="submit" >Submit</button>
-                    </form>
-                    }
-                </div>
-                <div className="tournament__edit-tab">
-                    <h1 onClick={() => setRestrictionsOpen(prev => !prev)}>Add Restriction</h1>
-                    {restrictionsOpen && 
-                    <div>
-                        <input placeholder="Restriction.." name="restriction" type="text"/>
-                        <button>Submit</button>
-                    </div>
-                    }
-                </div>
-                <div className="tournament__edit-tab">
-                    <h1 onClick={() => setParticipantsOpen(prev => !prev)}>Add Participant</h1>
-                    {participantsOpen && 
-                    <div>
-                        <input placeholder="Participant.." name="participant" type="text"/>
-                        <button>Submit</button>
-                    </div>
-                    }
-                </div>
+            <button onClick={() => history.push("/")}>Back</button>
+            <br></br>
+            <button onClick={deleteTournament}>Delete Tournament</button>
+            <br></br>
+            <h1>{user.username} {tournament && tournament?.name}</h1>
+            <br></br>
+            <EditTournament tournament={tournament && tournament}/>
+            <br></br>
+            <div>
+                <h2>Rules</h2>
+                <Rules tournamentName={tournament?.name} rules={tournament?.rules}/>
+            </div>
+            <br></br>
+            <div>
+                <h2>Restrictions</h2>
+                <Restrictions tournamentName={tournament?.name} restrictions={tournament?.restrictions}/>
+            </div>
+            <br></br>
+            <div>
+                <h2>Participants</h2>
+                <Participants tournamentName={tournament?.name} participants={tournament?.participants}/>
             </div>
         </div>
     )
 }
 
 const FETCH_TOURNAMENT_QUERY = gql`
-  query($username: String!, $tournamentName: String!){
+  query ($username: String!, $tournamentName: String!){
   getTournament(username: $username, tournamentName: $tournamentName){
     name
     username
     rules
+    restrictions
+    participants{
+      name
+      status
+    }
   }
 }
 `
 
-const ADD_RULE = gql`
-mutation($tournamentName: String, $rule: String!){
-  addRule(tournamentName: $tournamentName, rule: $rule){
-    name
-    username
-    rules
-  }
+const DELETE_TOURNAMENT_QUERY = gql`
+mutation($tournamentName: String!){
+    deleteTournament(tournamentName: $tournamentName){
+        res
+    }
 }
 `
+
 
 export default Tournament
