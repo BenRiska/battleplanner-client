@@ -15,7 +15,7 @@ function Tournament(props) {
 
     const history = useHistory()
 
-    const {id} = useParams
+    const {id} = useParams()
 
     const { loading, error, data: { getTournament: tournament } = {}} = useQuery(FETCH_TOURNAMENT_QUERY, {variables: { username: user.username, tournamentName: id}})
 

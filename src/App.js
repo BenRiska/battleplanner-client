@@ -12,7 +12,6 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-          <NavBar/>
           <Switch>
             <AuthRoute exact redirectIfNotSignedIn path="/" component={Home} />
             <AuthRoute exact path="/login" component={Login} />

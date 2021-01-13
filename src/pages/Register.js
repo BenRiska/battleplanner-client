@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import "../styles/register/register.css"
 
 import { AuthContext } from '../context/auth';
 import { useForm } from '../utils/hooks';

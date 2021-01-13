@@ -16,7 +16,7 @@ function EditTournament({tournament}) {
 
     const [addRule] = useMutation(ADD_RULE, {
         onError(err) {
-            console.log(err.graphQLErrors[0].extensions.exception.errors);
+            console.log(err);
           },
         variables: {username: user.username, tournamentName: tournament?.name, rule: newRule}
     })
