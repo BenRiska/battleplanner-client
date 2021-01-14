@@ -1,25 +1,28 @@
 import React, { useContext} from 'react';
 import { Link } from 'react-router-dom';
-
+import "../styles/NavBar.css"
 import { AuthContext } from '../context/auth';
+
 
 function NavBar() {
 
-    const { user, logout } = useContext(AuthContext);
+  const { logout } = useContext(AuthContext);
 
-    const navBar = user ? (
-        <button onClick={logout}>Logout</button>
-      ) : (
-        <div>
-          <Link to="/register">Register</Link>
-          <br/>
-          <Link to="/login">Login</Link>
+    return (
+        <div className="navbar">
+          <div className="navbar__left">
+            <img src="./ring.svg" alt="icon"/>
+            <h2>Tournament Planner</h2>
+          </div>
+          <div className="navbar__right">
+            <div className="navbar__links">
+            <Link to="/">About</Link>
+            <p onClick={logout}>Logout</p>
+            </div>
+            <img src="./ring-right.svg" alt="icon"/>
+          </div>
         </div>
-      );
-    
-
-
-    return navBar
+        )
 }
 
 export default NavBar

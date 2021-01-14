@@ -1,8 +1,10 @@
 import React, { useContext,} from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import "../styles/home/home.css"
 
 import { AuthContext } from '../context/auth';
+import Navbar from "../components/NavBar"
 import TournamentForm from '../components/TournamentForm';
 import TournamentCard from '../components/TournamentCard';
 
@@ -15,8 +17,8 @@ function Home() {
     console.log(tournaments, error)
 
     return (
-        <div> 
-            <TournamentForm/>
+        <div className="home"> 
+            <Navbar/>
             {loading ? (
                 <div>
                     <h2>Loading</h2>
@@ -24,7 +26,8 @@ function Home() {
             )
             : 
             (
-                <div>
+                <div className="home__grid">
+                <TournamentForm/>
                 {tournaments.map(tournament => <TournamentCard key={tournament.name} tournament={tournament}/>)
                 }
                </div>

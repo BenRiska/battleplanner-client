@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import "../styles/home/TournamentForm.css"
 
 function TournamentForm(props) {
 
@@ -23,11 +24,10 @@ function TournamentForm(props) {
       console.log(errors)
 
     return (
-        <div>
-            <h1>Create a Tournament</h1>
+        <div className="tournamentForm">
+            <h1>New Tournament</h1>
             <form>
                 <div className="tournament__input">
-                    <label>Name</label>
                     <input onChange={e => setTournamentName(e.target.value)}  placeholder="Name.." name="name" type="text"/>
                 </div>
                 <button onClick={e => executeQuery(e)}>Create</button>

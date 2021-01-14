@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import {Link} from "react-router-dom"
+import "../styles/login/login.css"
 
 import { AuthContext } from '../context/auth';
 import { useForm } from '../utils/hooks';
@@ -26,7 +28,7 @@ function Login(props) {
       props.history.push('/');
     },
     onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      setErrors(err);
     },
     variables: values
   });
@@ -38,11 +40,12 @@ function Login(props) {
   console.log(errors, loading)
 
     return (
-        <div>
-            <h1>Login</h1>
+        <div className="login">
+            <h1>Organise Your Gaming Events With Ease</h1>
+            <img src="./shapes.png" alt="hero icons"/>
             <form>
-                <div className="register__input">
-                    <label>Username</label>
+                <h2>Login</h2>
+                <div className="login__input">
                     <input
                     placeholder="Username.."
                     name="username"
@@ -50,8 +53,7 @@ function Login(props) {
                     onChange={onChange} 
                     type="text"/>
                 </div>
-                <div className="register__input">
-                    <label>Password</label>
+                <div className="login__input">
                     <input 
                     placeholder="Password.."
                     name="password"
@@ -60,6 +62,7 @@ function Login(props) {
                     type="password"/>
                 </div>
                 <button onClick={onSubmit}>Login</button>
+                <p>Haven't got an account? <Link to="/register">Register</Link></p>
             </form>
         </div>
     )

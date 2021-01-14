@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import "../styles/register/register.css"
+import {Link} from "react-router-dom"
 
 import { AuthContext } from '../context/auth';
 import { useForm } from '../utils/hooks';
@@ -41,11 +42,12 @@ function Register(props) {
       console.log(errors, loading)
 
     return (
-        <div>
-            <h1>Register</h1>
+        <div className="register">
+            <h1>Organise Your Gaming Events With Ease</h1>
+            <img src="./shapes.png" alt="hero icons"/>
             <form>
+                <h2>Register</h2>
                 <div className="register__input">
-                    <label>Username</label>
                     <input
                     placeholder="Username.."
                     name="username"
@@ -54,7 +56,7 @@ function Register(props) {
                     type="text"/>
                 </div>
                 <div className="register__input">
-                    <label>Email</label>
+                    
                     <input 
                     placeholder="Email.."
                     name="email"
@@ -63,7 +65,7 @@ function Register(props) {
                     type="email"/>
                 </div>
                 <div className="register__input">
-                    <label>Password</label>
+                    
                     <input 
                     placeholder="Password.."
                     name="password"
@@ -72,15 +74,16 @@ function Register(props) {
                     type="password"/>
                 </div>
                 <div className="register__input">
-                    <label>Confirm Password</label>
+                    
                     <input 
-                    placeholder="Password.."
+                    placeholder="Confirm Password.."
                     name="confirmPassword"
                     value={values.confirmPassword}
                     onChange={onChange} 
                     type="password"/>
                 </div>
                 <button onClick={onSubmit}>Create Account</button>
+                <p>Got an account already? <Link to="/login">Sign In</Link></p>
             </form>
         </div>
     )

@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Switch} from 'react-router-dom';
-import NavBar from './components/NavBar';
 import { AuthProvider } from './context/auth';
 
 import Home from './pages/Home';

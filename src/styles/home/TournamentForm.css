@@ -1,0 +1,45 @@
+.tournamentForm {
+  width: 100%;
+  background: #f4f4f2;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  text-align: center;
+  height: 300px;
+  justify-content: space-around;
+}
+
+.tournamentForm > h1 {
+  margin-bottom: 2rem;
+  color: var(--main-dark-color);
+}
+
+.tournamentForm > form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tournament__input > input {
+  width: 80%;
+  height: 3rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.8rem;
+  background-color: var(--main-light-color);
+  color: var(--main-dark-color);
+}
+
+.tournamentForm > form > button {
+  width: 120px;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--main-light-color);
+  border: none;
+  font-size: 1.5rem;
+  color: var(--main-dark-color);
+  cursor: pointer;
+}
