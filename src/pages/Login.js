@@ -42,7 +42,7 @@ function Login(props) {
     return (
         <div className="login">
             <h1>Organise Your Gaming Events With Ease</h1>
-            <img src="./shapes.png" alt="hero icons"/>
+            <img src="./shapes.svg" alt="hero icons"/>
             <form>
                 <h2>Login</h2>
                 <div className="login__input">

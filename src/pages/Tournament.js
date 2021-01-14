@@ -7,6 +7,8 @@ import Restrictions from '../components/Restrictions';
 import Participants from '../components/Participants';
 import EditTournament from '../components/EditTournament';
 import { useParams, useHistory } from 'react-router-dom';
+import "../styles/tournament/Tournament.css"
+import NavBar from "../components/NavBar"
 
 
 function Tournament(props) {
@@ -35,15 +37,12 @@ function Tournament(props) {
 
 
     return (
-        <div>
-            <button onClick={() => history.push("/")}>Back</button>
-            <br></br>
+        <div className="tournament">
+            <NavBar alterImageRoute/>
+            <div className="tournament__main">
+                <EditTournament tournament={tournament && tournament}/>
+            </div>
             <button onClick={deleteTournament}>Delete Tournament</button>
-            <br></br>
-            <h1>{user.username} {tournament && tournament?.name}</h1>
-            <br></br>
-            <EditTournament tournament={tournament && tournament}/>
-            <br></br>
             <div>
                 <h2>Rules</h2>
                 <Rules tournamentName={tournament?.name} rules={tournament?.rules}/>

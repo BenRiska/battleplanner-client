@@ -44,7 +44,7 @@ function Register(props) {
     return (
         <div className="register">
             <h1>Organise Your Gaming Events With Ease</h1>
-            <img src="./shapes.png" alt="hero icons"/>
+            <img src="./shapes.svg" alt="hero icons"/>
             <form>
                 <h2>Register</h2>
                 <div className="register__input">

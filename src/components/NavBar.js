@@ -4,22 +4,22 @@ import "../styles/NavBar.css"
 import { AuthContext } from '../context/auth';
 
 
-function NavBar() {
+function NavBar({alterImageRoute}) {
 
   const { logout } = useContext(AuthContext);
 
     return (
         <div className="navbar">
           <div className="navbar__left">
-            <img src="./ring.svg" alt="icon"/>
-            <h2>Tournament Planner</h2>
+            <img src={alterImageRoute ? "../ring.svg" : "./ring.svg"} alt="icon"/>
+            <Link to="/">Tournament Planner</Link>
           </div>
           <div className="navbar__right">
             <div className="navbar__links">
             <Link to="/">About</Link>
             <p onClick={logout}>Logout</p>
             </div>
-            <img src="./ring-right.svg" alt="icon"/>
+            <img src={alterImageRoute ? "../ring-right.svg" : "./ring-right.svg"} alt="icon"/>
           </div>
         </div>
         )
