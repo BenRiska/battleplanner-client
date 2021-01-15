@@ -1,0 +1,147 @@
+.editTournament {
+  flex: 0.3;
+  max-width: 400px;
+  height: 90vh;
+  background-color: var(--main-light-color);
+}
+
+.editTournament__tabs {
+  display: flex;
+  border-top: 2px solid var(--main-dark-color);
+  border-bottom: 2px solid var(--main-dark-color);
+}
+
+.editTournament__tab {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  background-color: var(--main-grey-color);
+  justify-content: center;
+  cursor: pointer;
+}
+
+.editTournament__tab > img {
+  height: 120%;
+}
+
+.editTournament__form-container {
+  background-color: var(--main-grey-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid var(--main-dark-color);
+}
+
+.editTournament__form-container > img {
+  padding: 1.5rem;
+  cursor: pointer;
+  transform: rotate(-45deg);
+  transition: all 0.2s ease;
+}
+
+.editTournament__form-container > img.form-active {
+  transform: rotate(0deg);
+}
+
+.editTournament__form {
+  padding-bottom: 1.5rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.editTournament__form > input {
+  height: 2rem;
+  width: 70%;
+  font-size: 1.2rem;
+  border: none;
+}
+
+.editTournament__form > button {
+  height: 2rem;
+  border: none;
+  background-color: #54d852;
+  padding: 0 0.4rem;
+  display: grid;
+  place-items: center;
+}
+
+.editTournament__form > button > img {
+  width: 20px;
+}
+
+.participants,
+.rules,
+.restrictions {
+  overflow-y: scroll;
+}
+
+.participant,
+.rule,
+.restriction {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--main-dark-color);
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  position: relative;
+}
+
+.participant > button,
+.rule > button,
+.restriction > button {
+  border: none;
+  background-color: transparent;
+  color: #d85a52;
+  font-weight: bold;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.edit-confirm-box {
+  position: absolute;
+  right: 90px;
+  top: 5%;
+  z-index: 20;
+  background-color: var(--main-grey-color);
+  border-radius: 10px;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.edit-confirm-box > p {
+  height: 50%;
+  display: grid;
+  place-items: center;
+  padding: 0 1rem;
+}
+
+.edit-confirm {
+  display: flex;
+  justify-content: space-around;
+  height: 50%;
+}
+
+.edit-confirm > p {
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.edit-confirm > p:nth-child(1) {
+  background-color: #d85a52;
+  border-bottom-left-radius: 10px;
+}
+
+.edit-confirm > p:nth-child(2) {
+  background-color: #54d852;
+  border-bottom-right-radius: 10px;
+}

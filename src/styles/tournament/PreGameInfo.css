@@ -1,0 +1,49 @@
+.preGameInfo {
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  background-color: #f4f4f2;
+  border-radius: 10px;
+}
+
+.delete-tournament-btn {
+  float: right;
+  outline: none;
+  border: none;
+  color: #d85a52;
+  font-weight: bold;
+  margin: 1rem 0;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.preGameInfo > h1 {
+  margin: 2rem 0;
+  font-weight: 400;
+  font-size: 1.8rem;
+}
+
+.preGameInfo > p {
+  margin: 1.5rem 0;
+  font-size: 1.4rem;
+}
+
+.preGameInfo > ul {
+  list-style: none;
+}
+
+.preGameInfo > ul > li {
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.start-tournament-btn {
+  margin: 2rem auto;
+  cursor: pointer;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--main-dark-color);
+  color: var(--main-light-color);
+  font-size: 2rem;
+}

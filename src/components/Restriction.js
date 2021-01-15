@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useMutation} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 function Restriction({restriction, tournamentName}) {
+
+  const [openDelete, setOpenDelete] = useState(false)
 
     const [deleteRestriction] = useMutation(DELETE_RESTRICTION, {
         onError(err) {
@@ -11,16 +13,19 @@ function Restriction({restriction, tournamentName}) {
         variables: {tournamentName: tournamentName, restriction: restriction}
     })
 
-    const executeDeleteRestriction = (e) => {
-        deleteRestriction()
-    }
-
     return (
-        <div>
+        <div className="restriction">
             <p>
                 {restriction}
             </p>
-            <button onClick={executeDeleteRestriction}>delete {restriction}</button>
+            <button onClick={() => setOpenDelete(prev => !prev)}>Remove</button>
+            {openDelete && (<div className="edit-confirm-box">
+              <p>Are you sure?</p>
+              <div className="edit-confirm">
+                <p onClick={() => setOpenDelete(prev => !prev)}>No</p>
+                <p onClick={deleteRestriction}>Yes</p>
+              </div>
+            </div>)}
         </div>
     )
 }

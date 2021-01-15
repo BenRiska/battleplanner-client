@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useMutation} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
 function Participant({participant, tournamentName}) {
+
+  const [openDelete, setOpenDelete] = useState(false)
 
     const [deleteParticipant] = useMutation(DELETE_PARTICIPANT, {
         onError(err) {
@@ -11,14 +13,17 @@ function Participant({participant, tournamentName}) {
         variables: {tournamentName: tournamentName, name: participant.name}
     })
 
-    const executeDeleteParticipant = (e) => {
-        deleteParticipant()
-    }
-
     return (
-        <div>
+        <div className="participant">
             <p>{participant.name}</p>
-            <button onClick={executeDeleteParticipant}>delete {participant.name}</button>
+            <button onClick={() => setOpenDelete(prev => !prev)}>Remove</button>
+            {openDelete && (<div className="edit-confirm-box">
+              <p>Are you sure?</p>
+              <div className="edit-confirm">
+                <p onClick={() => setOpenDelete(prev => !prev)}>No</p>
+                <p onClick={deleteParticipant}>Yes</p>
+              </div>
+            </div>)}
         </div>
     )
 }
