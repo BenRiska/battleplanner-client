@@ -4,7 +4,7 @@ import {useMutation} from '@apollo/react-hooks';
 import {useHistory} from "react-router-dom"
 import "../styles/tournament/PreGameInfo.css"
 
-function PreGameInfo({tournamentName}) {
+function PreGameInfo({tournament}) {
 
     const history = useHistory()
 
@@ -15,8 +15,28 @@ function PreGameInfo({tournamentName}) {
         onError(err) {
           console.log(err);
         },
-        variables: {tournamentName: tournamentName}
+        variables: {tournamentName: tournament?.name}
     })
+
+    const [StartRound] = useMutation(START_ROUND_QUERY, {
+        onError(err) {
+            console.log(err);
+          },
+        variables: {tournamentName: tournament?.name}
+    })
+
+
+
+    const StartTournament = () => {
+        if(
+            tournament?.participants.length > 1 && 
+            tournament?.participants.length % 2 === 0
+        ){
+            StartRound()
+        } else{
+            console.log("add people")
+        }
+    }
 
     return (
         <div className="preGameInfo">
@@ -30,7 +50,7 @@ function PreGameInfo({tournamentName}) {
                 <li>- Rules (optional)</li>
                 <li>- Restrictions (optional)</li>
             </ul>
-            <button className="start-tournament-btn">Start</button>
+            <button onClick={StartTournament} className="start-tournament-btn">Start</button>
         </div>
     )
 }
@@ -40,6 +60,20 @@ mutation($tournamentName: String!){
     deleteTournament(tournamentName: $tournamentName){
         res
     }
+}
+`
+
+const START_ROUND_QUERY = gql`
+mutation($tournamentName: String!){
+  startRound(tournamentName: $tournamentName){
+    name
+    fights{
+      fighterOne
+      fighterTwo
+      concluded
+    }
+    round
+  }
 }
 `
 

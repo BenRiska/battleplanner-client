@@ -6,7 +6,7 @@ import { useMutation} from '@apollo/react-hooks';
 
 
 
-function Rules({rules, tournamentName}) {
+function Rules({rules, tournamentName, hidden}) {
 
     const [newRule, setNewRule] = useState("")
     const [showForm, setShowForm] = useState(false)
@@ -28,7 +28,7 @@ function Rules({rules, tournamentName}) {
 
     return (
         <div className="rules">
-            <div className="editTournament__form-container">
+            { !hidden && (<div className="editTournament__form-container">
                 <img onClick={() => setShowForm(prev => !prev)} className={showForm ? "form-active" : null} src="../close.svg" alt="close icon"/>
                 {showForm &&
                 (<form className="editTournament__form">
@@ -36,9 +36,9 @@ function Rules({rules, tournamentName}) {
                     <button type="submit" onClick={executeAddRule}>Submit</button>
                 </form>)
                 }
-            </div>
+            </div>)}
             {rules && rules.map(rule => (
-            <Rule key={rule} rule={rule} tournamentName={tournamentName}/>
+            <Rule key={rule} rule={rule} hidden={hidden} tournamentName={tournamentName}/>
             ))}
         </div>
     )

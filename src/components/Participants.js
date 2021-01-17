@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { useMutation} from '@apollo/react-hooks';
 
 
-function Participants({participants, tournamentName}) {
+function Participants({participants, tournamentName, hidden}) {
 
     const [newParticipant, setNewParticipant] = useState("")
     const [showForm, setShowForm] = useState(false)
@@ -24,7 +24,7 @@ function Participants({participants, tournamentName}) {
 
     return (
         <div className="participants">
-            <div className="editTournament__form-container">
+            {!hidden && (<div className="editTournament__form-container">
                 <img onClick={() => setShowForm(prev => !prev)} className={showForm ? "form-active" : null} src="../close.svg" alt="close icon"/>
                 {showForm &&
                 (<form className="editTournament__form">
@@ -34,9 +34,9 @@ function Participants({participants, tournamentName}) {
                     </button>
                 </form>)
                 }
-            </div>
+            </div>)}
             {participants && participants.map(participant => (
-                <Participant key={`participant = ${participant}`} participant={participant} tournamentName={tournamentName}/>))}
+                <Participant key={`participant = ${participant}`} participant={participant} hidden={hidden} tournamentName={tournamentName}/>))}
         </div>
     )
 }

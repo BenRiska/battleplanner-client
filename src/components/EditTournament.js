@@ -23,11 +23,11 @@ function EditTournament({tournament}) {
                 </div>
 
                 <div className="editTournament__list">
-                    {openTab === "participants" && <Participants tournamentName={tournament?.name} participants={tournament?.participants}/>}
+                    {openTab === "participants" && <Participants tournamentName={tournament?.name} hidden={tournament?.active} participants={tournament?.participants}/>}
 
-                    {openTab === "rules" && <Rules tournamentName={tournament?.name} rules={tournament?.rules}/>}
+                    {openTab === "rules" && <Rules tournamentName={tournament?.name} hidden={tournament?.active} rules={tournament?.rules}/>}
 
-                    {openTab === "restrictions" && <Restrictions tournamentName={tournament?.name} restrictions={tournament?.restrictions}/>}
+                    {openTab === "restrictions" && <Restrictions tournamentName={tournament?.name} hidden={tournament?.active} restrictions={tournament?.restrictions}/>}
                 </div>
             </div>
     )

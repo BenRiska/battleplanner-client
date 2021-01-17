@@ -4,7 +4,7 @@ import { useMutation} from '@apollo/react-hooks';
 
 import Restriction from './Restriction';
 
-function Restrictions({restrictions, tournamentName}) {
+function Restrictions({restrictions, tournamentName, hidden}) {
 
     const [newRestriction, setNewRestriction] = useState("")
     const [showForm, setShowForm] = useState(false)
@@ -24,7 +24,7 @@ function Restrictions({restrictions, tournamentName}) {
 
     return (
         <div className="restrictions">
-            <div className="editTournament__form-container">
+            { !hidden && (<div className="editTournament__form-container">
             <img onClick={() => setShowForm(prev => !prev)} className={showForm ? "form-active" : null} src="../close.svg" alt="close icon"/>
             {showForm &&
             (<form className="editTournament__form">
@@ -32,9 +32,9 @@ function Restrictions({restrictions, tournamentName}) {
                 <button onClick={executeAddRestriction}>Submit</button>
             </form>)
             }
-            </div>
+            </div>)}
             {restrictions && restrictions.map(restriction => (
-                <Restriction key={`restriction = ${restriction}`} tournamentName={tournamentName} restriction={restriction}/>
+                <Restriction key={`restriction = ${restriction}`} tournamentName={tournamentName} hidden={hidden} restriction={restriction}/>
             ))}
         </div>
     )

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {useMutation} from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
-function Participant({participant, tournamentName}) {
+function Participant({participant, tournamentName, hidden}) {
 
   const [openDelete, setOpenDelete] = useState(false)
 
@@ -16,7 +16,7 @@ function Participant({participant, tournamentName}) {
     return (
         <div className="participant">
             <p>{participant.name}</p>
-            <button onClick={() => setOpenDelete(prev => !prev)}>Remove</button>
+            {!hidden && (<button onClick={() => setOpenDelete(prev => !prev)}>Remove</button>)}
             {openDelete && (<div className="edit-confirm-box">
               <p>Are you sure?</p>
               <div className="edit-confirm">
