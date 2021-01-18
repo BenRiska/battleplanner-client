@@ -1,0 +1,17 @@
+.statusBar {
+  flex: 0.25;
+  height: 90vh;
+  background-color: var(--main-light-color);
+}
+
+.statusBar__seperater {
+  padding: 1rem;
+  background-color: var(--main-dark-color);
+}
+
+.statusBar__participant {
+  padding: 1rem;
+  border-bottom: 1px solid var(--main-dark-color);
+  text-transform: capitalize;
+  font-weight: bold;
+}

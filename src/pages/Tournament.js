@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import gql from 'graphql-tag';
 import {useQuery} from '@apollo/react-hooks';
 import { AuthContext } from '../context/auth';
@@ -13,18 +13,34 @@ import PlayerStatusBar from '../components/PlayerStatusBar';
 
 function Tournament() {
 
+    const [roundWinners, setRoundWinners] = useState([])
+    const [roundLosers, setRoundLosers] = useState([])
     const { user } = useContext(AuthContext);
 
     const {id} = useParams()
 
+    const { loading, error, data: { getTournament: tournament } = {}} = useQuery(FETCH_TOURNAMENT_QUERY, {
+      onCompleted: (data) => {
+        const completedFights = data.getTournament.fights.filter(fight => (fight.concluded === true))
 
+        let winnerList = []
+        let loserList = []
 
-    const { loading, error, data: { getTournament: tournament } = {}} = useQuery(FETCH_TOURNAMENT_QUERY, {variables: { username: user.username, tournamentName: id}})
-    
-    console.log(tournament)
+        completedFights?.forEach(fight => {
+            if(fight.fighterOne === fight.winner){
+                winnerList.push(fight.fighterOne)
+                loserList.push(fight.fighterTwo)
+            } else{
+                loserList.push(fight.fighterOne)
+                winnerList.push(fight.fighterTwo)
+            }
+        })
 
-    console.log(error, loading)
+        setRoundLosers(loserList)
+        setRoundWinners(winnerList)
 
+      },
+      variables: { username: user.username, tournamentName: id}})
 
     return (
         <div className="tournament">
@@ -36,7 +52,7 @@ function Tournament() {
                 ): (
                   <PreGameInfo tournament={tournament}/>
                 )}
-                {tournament?.active && <PlayerStatusBar/>}
+                {tournament?.active && <PlayerStatusBar winners={roundWinners} losers={roundLosers}/>}
             </div>
         </div>
     )
@@ -58,6 +74,7 @@ const FETCH_TOURNAMENT_QUERY = gql`
       fighterOne
       fighterTwo
       concluded
+      winner
     }
     round
     winner

@@ -36,7 +36,7 @@ function Participants({participants, tournamentName, hidden}) {
                 }
             </div>)}
             {participants && participants.map(participant => (
-                <Participant key={`participant = ${participant}`} participant={participant} hidden={hidden} tournamentName={tournamentName}/>))}
+                <Participant key={`participant = ${participant.name}`} participant={participant} hidden={hidden} tournamentName={tournamentName}/>))}
         </div>
     )
 }

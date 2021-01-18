@@ -1,6 +1,5 @@
 .editTournament {
-  flex: 0.3;
-  max-width: 400px;
+  flex: 0.25;
   height: 90vh;
   background-color: var(--main-light-color);
 }

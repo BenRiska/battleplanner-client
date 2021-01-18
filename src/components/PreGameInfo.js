@@ -18,7 +18,7 @@ function PreGameInfo({tournament}) {
         variables: {tournamentName: tournament?.name}
     })
 
-    const [StartRound] = useMutation(START_ROUND_QUERY, {
+    const [StartGame] = useMutation(START_GAME_QUERY, {
         onError(err) {
             console.log(err);
           },
@@ -32,7 +32,7 @@ function PreGameInfo({tournament}) {
             tournament?.participants.length > 1 && 
             tournament?.participants.length % 2 === 0
         ){
-            StartRound()
+            StartGame()
         } else{
             console.log("add people")
         }
@@ -63,9 +63,9 @@ mutation($tournamentName: String!){
 }
 `
 
-const START_ROUND_QUERY = gql`
+const START_GAME_QUERY = gql`
 mutation($tournamentName: String!){
-  startRound(tournamentName: $tournamentName){
+  startGame(tournamentName: $tournamentName){
     name
     fights{
       fighterOne
