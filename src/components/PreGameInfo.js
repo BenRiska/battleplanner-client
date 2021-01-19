@@ -1,15 +1,29 @@
-import React from 'react'
-import gql from 'graphql-tag';
+import React, {useContext} from 'react'
 import {useMutation} from '@apollo/react-hooks';
 import {useHistory} from "react-router-dom"
+import { AuthContext } from '../context/auth';
 import "../styles/tournament/PreGameInfo.css"
+import {START_GAME_QUERY, DELETE_TOURNAMENT_QUERY, FETCH_TOURNAMENTS_QUERY} from "../utils/queries"
+
 
 function PreGameInfo({tournament}) {
+
+    const { user } = useContext(AuthContext);
 
     const history = useHistory()
 
     const [deleteTournament] = useMutation(DELETE_TOURNAMENT_QUERY, {
-        update(){
+        update(proxy, result){
+            const data = proxy.readQuery({
+                query: FETCH_TOURNAMENTS_QUERY,
+                variables: {username: user?.username}
+            })
+            data.getTournaments = result.data.deleteTournament      
+              proxy.writeQuery({
+                query: FETCH_TOURNAMENTS_QUERY,
+                data,
+                variables: {username: user?.username}
+            })
             history.push("/")
         },
         onError(err) {
@@ -54,27 +68,5 @@ function PreGameInfo({tournament}) {
         </div>
     )
 }
-
-const DELETE_TOURNAMENT_QUERY = gql`
-mutation($tournamentName: String!){
-    deleteTournament(tournamentName: $tournamentName){
-        res
-    }
-}
-`
-
-const START_GAME_QUERY = gql`
-mutation($tournamentName: String!){
-  startGame(tournamentName: $tournamentName){
-    name
-    fights{
-      fighterOne
-      fighterTwo
-      concluded
-    }
-    round
-  }
-}
-`
 
 export default PreGameInfo

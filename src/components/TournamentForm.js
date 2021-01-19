@@ -1,17 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import { AuthContext } from '../context/auth';
 import "../styles/home/TournamentForm.css"
+import {CREATE_TOURNAMENT, FETCH_TOURNAMENTS_QUERY} from "../utils/queries"
+import {useHistory} from "react-router-dom"
 
-function TournamentForm(props) {
+function TournamentForm() {
 
     const [tournamentName, setTournamentName] = useState("")
-    const [errors, setErrors] = useState({})
+
+    const history = useHistory()
+
+    const { user } = useContext(AuthContext);
 
     const [createTournament, ] = useMutation(CREATE_TOURNAMENT, {
+      update(proxy, result){
+        const data = proxy.readQuery({
+            query: FETCH_TOURNAMENTS_QUERY,
+            variables: {username: user?.username}
+        })
+        data.getTournaments = [...data.getTournaments, result.data.createTournament]     
+        console.log(data) 
+          proxy.writeQuery({
+            query: FETCH_TOURNAMENTS_QUERY,
+            data,
+            variables: {username: user?.username}
+        })
+        history.push(`/tournament/${result.data.createTournament.name}`)
+    },
         variables: {tournamentName},
         onError(err) {
-          setErrors(err.graphQLErrors[0].extensions.exception.errors);
+          console.log(err);
         }
       });
 
@@ -21,32 +40,17 @@ function TournamentForm(props) {
         }
       }
 
-      console.log(errors)
-
     return (
         <div className="tournamentForm">
             <h1>New Tournament</h1>
-            <form>
+            <div>
                 <div className="tournament__input">
                     <input onChange={e => setTournamentName(e.target.value)}  placeholder="Name.." name="name" type="text"/>
                 </div>
                 <button onClick={e => executeQuery(e)}>Create</button>
-            </form>
+            </div>
         </div>
     )
 }
-
-const CREATE_TOURNAMENT = gql`
- mutation createTournament(
-     $tournamentName: String!
-     ){
-        createTournament(
-            tournamentName: $tournamentName
-        ){
-        name
-        username
-    }
-}
-`;
 
 export default TournamentForm

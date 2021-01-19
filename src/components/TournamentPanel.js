@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import gql from 'graphql-tag';
 import {useMutation} from '@apollo/react-hooks';
 import "../styles/tournament/TournamentPanel.css"
 import RoundSummary from './RoundSummary';
+import {END_FIGHT_QUERY, DELETE_TOURNAMENT_QUERY} from "../utils/queries"
 
 function TournamentPanel({tournament}) {
 
@@ -13,9 +13,9 @@ function TournamentPanel({tournament}) {
     useEffect(() => {
         let upcomingFights = tournament?.fights.filter(fight => (fight.concluded === false))
 
-        if(upcomingFights.length === 1){
+        if(upcomingFights?.length === 1 && upcomingFights){
             setCurrentFight(upcomingFights[0])
-        } else{
+        } else if (upcomingFights){
             setCurrentFight(upcomingFights[0])
             upcomingFights = upcomingFights.slice(1, upcomingFights.length)
             setRemainingFights(upcomingFights)
@@ -42,6 +42,11 @@ function TournamentPanel({tournament}) {
         deleteTournament({variables: {tournamentName: tournament.name}})
     }
 
+    const generateRestriction = () => {
+        const num = Math.floor(Math.random() * (tournament.restrictions.length))
+        alert(tournament.restrictions[num])
+    }
+
     return (
         <div className="tournamentPanel">
             {currentFight ? 
@@ -62,8 +67,8 @@ function TournamentPanel({tournament}) {
                 </div>
                 <div className="tournamentPanel__options">
                     <div className="tournamentPanel__options-box">
-                        <button>Generate Restriction</button>
-                        <button onClick={executeDeleteTournament}>End Tournament</button>
+                        {tournament.restrictions.length > 1 && (<button onClick={generateRestriction} >Generate Restriction</button>)}
+                        <button className="red-btn" onClick={executeDeleteTournament}>End Tournament</button>
                     </div>
                     <div className="tournamentPanel__round-card">
                         <span>Final</span>
@@ -89,39 +94,5 @@ function TournamentPanel({tournament}) {
         </div>
     )
 }
-
-const END_FIGHT_QUERY = gql`
-    mutation($tournamentName: String!, $winner: String!){
-  endFight(tournamentName: $tournamentName, winner: $winner){
-    name
-    username
-    rules
-    restrictions
-    participants{
-      name
-      status
-    }
-    active
-    fights{
-      fighterOne
-      fighterTwo
-      concluded
-      winner
-    }
-    round
-    winner
-  }
-}
-`
-
-const DELETE_TOURNAMENT_QUERY = gql`
-    mutation($tournamentName: String!){
-  deleteTournament(tournamentName: $tournamentName){
-    res
-  }
-}
-`
-
-
 
 export default TournamentPanel

@@ -1,12 +1,24 @@
 import React, {useState} from 'react'
 import {useMutation} from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import {DELETE_RESTRICTION, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 
 function Restriction({restriction, tournamentName, hidden}) {
 
   const [openDelete, setOpenDelete] = useState(false)
 
     const [deleteRestriction] = useMutation(DELETE_RESTRICTION, {
+          update(proxy, result){
+            const data = proxy.readQuery({
+                query: FETCH_TOURNAMENT_QUERY,
+                variables: {tournamentName}
+            })
+            data.getTournament = result.data.deleteRestriction
+            proxy.writeQuery({
+                query: FETCH_TOURNAMENT_QUERY,
+                data,
+                variables: {tournamentName}
+            })
+        },
         onError(err) {
             console.log(err);
           },
@@ -31,19 +43,6 @@ function Restriction({restriction, tournamentName, hidden}) {
 }
 
 
-const DELETE_RESTRICTION = gql`
-  mutation ($restriction: String!, $tournamentName: String!){
-  deleteRestriction(restriction: $restriction, tournamentName: $tournamentName){
-    name
-    username
-    rules
-    restrictions
-    participants{
-      name
-      status
-    }
-  }
-}
-`
+
 
 export default Restriction

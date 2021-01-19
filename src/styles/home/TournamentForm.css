@@ -15,7 +15,7 @@
   color: var(--main-dark-color);
 }
 
-.tournamentForm > form {
+.tournamentForm > div {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@
   color: var(--main-dark-color);
 }
 
-.tournamentForm > form > button {
+.tournamentForm > div > button {
   width: 120px;
   padding: 1rem;
   border-radius: 10px;

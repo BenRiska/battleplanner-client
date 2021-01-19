@@ -1,7 +1,7 @@
 import React from 'react'
 import "../styles/tournament/RoundSummary.css"
-import gql from 'graphql-tag';
 import {useMutation} from '@apollo/react-hooks';
+import {DELETE_TOURNAMENT_QUERY, START_NEXT_ROUND_QUERY} from "../utils/queries"
 
 
 function RoundSummary({tournament}) {
@@ -26,7 +26,7 @@ function RoundSummary({tournament}) {
 
     return (
         <div className="roundSummary">
-            {tournament.fights.length < 2 ? 
+            {tournament?.fights.length < 2 ? 
             <div className="winners__card">
                 <h2>Congrats</h2>
                 <p>{tournament?.winner}!</p>
@@ -42,37 +42,5 @@ function RoundSummary({tournament}) {
         </div>
     )
 }
-
-const START_NEXT_ROUND_QUERY = gql`
-    mutation($tournamentName: String!){
-    startNextRound(tournamentName: $tournamentName){
-    name
-    username
-    rules
-    restrictions
-    participants{
-      name
-      status
-    }
-    active
-    fights{
-      fighterOne
-      fighterTwo
-      concluded
-      winner
-    }
-    round
-    winner
-  }
-}
-`
-
-const DELETE_TOURNAMENT_QUERY = gql`
-    mutation($tournamentName: String!){
-  deleteTournament(tournamentName: $tournamentName){
-    res
-  }
-}
-`
 
 export default RoundSummary

@@ -56,13 +56,26 @@
   width: 120px;
   text-align: center;
   border-radius: 10px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: var(--main-dark-color);
 }
 
 .tournamentCard__right > p {
-  background-color: #85e56d;
   margin-top: 0.5rem;
+}
+
+.tournamentCard__right > p.active-tab {
+  background-color: #85e56d;
+}
+
+.tournamentCard__right > p.start-tab {
+  background-color: #e2db29;
+  color: var(--main-dark-color);
+}
+
+.tournamentCard__right > p.complete-tab {
+  background-color: #d85a52;
+  color: white;
 }
 
 .tournamentCard__right > a {

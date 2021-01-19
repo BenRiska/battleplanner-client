@@ -16,6 +16,7 @@ function NavBar({alterImageRoute}) {
           </div>
           <div className="navbar__right">
             <div className="navbar__links">
+            <Link to="/">Home</Link>
             <Link to="/">About</Link>
             <p onClick={logout}>Logout</p>
             </div>

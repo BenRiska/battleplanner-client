@@ -63,12 +63,12 @@
   cursor: pointer;
 }
 
-.tournamentPanel__options-box > button:nth-child(1) {
+.tournamentPanel__options-box > button {
   background-color: var(--main-grey-color);
 }
 
-.tournamentPanel__options-box > button:nth-child(2) {
-  background-color: #d85a52;
+.red-btn {
+  background-color: #d85a52 !important;
   color: white;
 }
 

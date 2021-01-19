@@ -13,7 +13,13 @@ function TournamentCard({tournament}) {
                         <span>{tournament.participants.length}</span>
                     </div>
                     <div className="tournamentCard__right">
-                        <p>Active</p>
+                        {tournament.active && <p className="active-tab">Active</p>}
+                        {!tournament.active && 
+                        tournament.round === 0
+                        && <p className="start-tab">Start</p>}
+                        {!tournament.active && 
+                        tournament.round > 0
+                        && <p className="complete-tab">Complete</p>}
                         <Link to={`/tournament/${tournament.name}`}>View</Link>
                     </div>
                 </div>

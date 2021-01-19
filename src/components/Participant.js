@@ -1,12 +1,24 @@
 import React, {useState} from 'react'
 import {useMutation} from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import {DELETE_PARTICIPANT, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 
 function Participant({participant, tournamentName, hidden}) {
 
   const [openDelete, setOpenDelete] = useState(false)
 
     const [deleteParticipant] = useMutation(DELETE_PARTICIPANT, {
+          update(proxy, result){
+            const data = proxy.readQuery({
+                query: FETCH_TOURNAMENT_QUERY,
+                variables: {tournamentName}
+            })
+            data.getTournament = result.data.deleteParticipant
+            proxy.writeQuery({
+                query: FETCH_TOURNAMENT_QUERY,
+                data,
+                variables: {tournamentName}
+            })
+        },
         onError(err) {
             console.log(err);
           },
@@ -28,19 +40,6 @@ function Participant({participant, tournamentName, hidden}) {
     )
 }
 
-const DELETE_PARTICIPANT = gql`
-  mutation ($name: String!, $tournamentName: String!){
-  deleteParticipant(name: $name, tournamentName: $tournamentName){
-    name
-    username
-    rules
-    restrictions
-    participants{
-      name
-      status
-    }
-  }
-}
-`
+
 
 export default Participant

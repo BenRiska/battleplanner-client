@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import gql from 'graphql-tag';
 import { useMutation} from '@apollo/react-hooks';
+import {ADD_RESTRICTION, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 
 import Restriction from './Restriction';
 
@@ -10,6 +10,19 @@ function Restrictions({restrictions, tournamentName, hidden}) {
     const [showForm, setShowForm] = useState(false)
 
     const [addRestriction] = useMutation(ADD_RESTRICTION, {
+        update(proxy, result){
+            const data = proxy.readQuery({
+                query: FETCH_TOURNAMENT_QUERY,
+                variables: {tournamentName}
+            })
+            data.getTournament = result.data.addRestriction
+            proxy.writeQuery({
+                query: FETCH_TOURNAMENT_QUERY,
+                data,
+                variables: {tournamentName}
+            })
+            setNewRestriction("")
+        },
         onError(err) {
             console.log(err.graphQLErrors[0].extensions.exception.errors);
           },
@@ -27,10 +40,10 @@ function Restrictions({restrictions, tournamentName, hidden}) {
             { !hidden && (<div className="editTournament__form-container">
             <img onClick={() => setShowForm(prev => !prev)} className={showForm ? "form-active" : null} src="../close.svg" alt="close icon"/>
             {showForm &&
-            (<form className="editTournament__form">
+            (<div className="editTournament__form">
                 <input value={newRestriction} onChange={e => setNewRestriction(e.target.value)} placeholder="Restriction.." name="restriction" type="text"/>
                 <button onClick={executeAddRestriction}>Submit</button>
-            </form>)
+            </div>)
             }
             </div>)}
             {restrictions && restrictions.map(restriction => (
@@ -39,17 +52,6 @@ function Restrictions({restrictions, tournamentName, hidden}) {
         </div>
     )
 }
-
-const ADD_RESTRICTION = gql`
-mutation($tournamentName: String!, $restriction: String!){
-    addRestriction(tournamentName: $tournamentName, restriction: $restriction){
-    name
-    username
-    rules
-    restrictions
-  }
-}
-`
 
 
 export default Restrictions

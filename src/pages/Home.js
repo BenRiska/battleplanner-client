@@ -1,7 +1,7 @@
 import React, { useContext,} from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
 import "../styles/home/home.css"
+import {FETCH_TOURNAMENTS_QUERY} from "../utils/queries"
 
 import { AuthContext } from '../context/auth';
 import Navbar from "../components/NavBar"
@@ -12,7 +12,9 @@ function Home() {
 
     const { user } = useContext(AuthContext);
 
-    const { loading, error, data: { getTournaments: tournaments } = {}} = useQuery(FETCH_TOURNAMENTS_QUERY, {variables: { username: user.username}})
+    const { loading, error, data: { getTournaments: tournaments } = {}} = useQuery(FETCH_TOURNAMENTS_QUERY, {
+        variables: {username: user?.username}
+    })
 
     console.log(tournaments, error)
 
@@ -28,7 +30,7 @@ function Home() {
             (
                 <div className="home__grid">
                 <TournamentForm/>
-                {tournaments.map(tournament => <TournamentCard key={tournament.name} tournament={tournament}/>)
+                {tournaments?.map(tournament => <TournamentCard key={tournament.name} tournament={tournament}/>)
                 }
                </div>
             )
@@ -37,19 +39,5 @@ function Home() {
     )
 }
 
-export const FETCH_TOURNAMENTS_QUERY = gql`
-  query ($username: String!){
-  getTournaments(username: $username){
-    name
-    rules
-    username
-    restrictions
-    participants{
-      name
-      status
-    }
-  }
-}
-`;
 
 export default Home

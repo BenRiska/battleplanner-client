@@ -1,8 +1,7 @@
-import React, {useContext, useState} from 'react'
+import React, {useState} from 'react'
 import Rule from './Rule'
-import gql from 'graphql-tag';
-import { AuthContext } from '../context/auth';
 import { useMutation} from '@apollo/react-hooks';
+import {ADD_RULE, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 
 
 
@@ -11,13 +10,24 @@ function Rules({rules, tournamentName, hidden}) {
     const [newRule, setNewRule] = useState("")
     const [showForm, setShowForm] = useState(false)
 
-    const { user } = useContext(AuthContext);
-
     const [addRule] = useMutation(ADD_RULE, {
+        update(proxy, result){
+            const data = proxy.readQuery({
+                query: FETCH_TOURNAMENT_QUERY,
+                variables: {tournamentName}
+            })
+            data.getTournament = result.data.addRule
+            proxy.writeQuery({
+                query: FETCH_TOURNAMENT_QUERY,
+                data,
+                variables: {tournamentName}
+            })
+            setNewRule("")
+        },
         onError(err) {
             console.log(err);
           },
-        variables: {username: user.username, tournamentName: tournamentName, rule: newRule}
+        variables: {tournamentName: tournamentName, rule: newRule}
     })
 
     const executeAddRule = () => {
@@ -31,10 +41,10 @@ function Rules({rules, tournamentName, hidden}) {
             { !hidden && (<div className="editTournament__form-container">
                 <img onClick={() => setShowForm(prev => !prev)} className={showForm ? "form-active" : null} src="../close.svg" alt="close icon"/>
                 {showForm &&
-                (<form className="editTournament__form">
+                (<div className="editTournament__form">
                     <input value={newRule} onChange={e => setNewRule(e.target.value)} placeholder="Rule.." name="rule" type="text"/>
                     <button type="submit" onClick={executeAddRule}>Submit</button>
-                </form>)
+                </div>)
                 }
             </div>)}
             {rules && rules.map(rule => (
@@ -44,14 +54,5 @@ function Rules({rules, tournamentName, hidden}) {
     )
 }
 
-const ADD_RULE = gql`
-mutation($username: String!, $tournamentName: String!, $rule: String!){
-    addRule(username: $username, tournamentName: $tournamentName, rule: $rule){
-    name
-    username
-    rules
-  }
-}
-`
 
 export default Rules
