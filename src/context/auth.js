@@ -2,7 +2,9 @@ import React, { useReducer, createContext } from 'react';
 import jwtDecode from 'jwt-decode';
 
 const initialState = {
-  user: null
+  user: null,
+  tournamentss: null,
+  tournament: null
 };
 
 if (localStorage.getItem('jwtToken')) {
@@ -18,7 +20,9 @@ if (localStorage.getItem('jwtToken')) {
 const AuthContext = createContext({
   user: null,
   login: (userData) => {},
-  logout: () => {}
+  logout: () => {},
+  updateTournament: (newTournament) => {},
+  updateTournaments: (newTournaments) => {},
 });
 
 function authReducer(state, action) {
@@ -32,6 +36,16 @@ function authReducer(state, action) {
       return {
         ...state,
         user: null
+      };
+    case "UPDATE_TOURNAMENT":
+      return {
+        ...state,
+        tournament: action.payload
+      };
+    case "UPDATE_TOURNAMENTS":
+      return {
+        ...state,
+        tournaments: action.payload
       };
     default:
       return state;
@@ -54,9 +68,30 @@ function AuthProvider(props) {
     dispatch({ type: 'LOGOUT' });
   }
 
+  function updateTournament(newTournament) {
+    dispatch({
+      type: "UPDATE_TOURNAMENT",
+      payload: newTournament
+    })
+  }
+
+  function updateTournaments(newTournaments) {
+    dispatch({
+      type: "UPDATE_TOURNAMENTS",
+      payload: newTournaments
+    })
+  }
+
   return (
     <AuthContext.Provider
-      value={{ user: state.user, login, logout }}
+      value={{ 
+        user: state.user, 
+        tournament: state.tournament,
+        tournaments: state.tournaments,
+        login, 
+        logout, 
+        updateTournament, 
+        updateTournaments }}
       {...props}
     />
   );
