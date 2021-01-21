@@ -19,14 +19,11 @@ function TournamentForm() {
             query: FETCH_TOURNAMENTS_QUERY,
             variables: {username: user?.username}
         })
-        data.getTournaments = [...data.getTournaments, result.data.createTournament]     
-        console.log(data) 
           proxy.writeQuery({
             query: FETCH_TOURNAMENTS_QUERY,
-            data,
+            data: {getTournaments: [result.data.createTournament, ...data.getTournaments]},
             variables: {username: user?.username}
         })
-        history.push(`/tournament/${result.data.createTournament.name}`)
     },
         variables: {tournamentName},
         onError(err) {

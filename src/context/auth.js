@@ -3,7 +3,7 @@ import jwtDecode from 'jwt-decode';
 
 const initialState = {
   user: null,
-  tournamentss: null,
+  tournaments: null,
   tournament: null
 };
 

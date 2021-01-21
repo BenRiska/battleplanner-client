@@ -39,11 +39,13 @@ mutation register(
 export const FETCH_TOURNAMENTS_QUERY = gql`
 query ($username: String!){
 getTournaments(username: $username){
+  id
   name
   rules
   username
   restrictions
   participants{
+    id
     name
     status
   }
@@ -56,16 +58,19 @@ getTournaments(username: $username){
 export const FETCH_TOURNAMENT_QUERY = gql`
 query getTournament($tournamentName: String!){
 getTournament(tournamentName: $tournamentName){
+  id
   name
   username
   rules
   restrictions
   participants{
+    id
     name
     status
   }
   active
   fights{
+    id
     fighterOne
     fighterTwo
     concluded
@@ -80,11 +85,13 @@ getTournament(tournamentName: $tournamentName){
 export const DELETE_PARTICIPANT = gql`
 mutation ($name: String!, $tournamentName: String!){
 deleteParticipant(name: $name, tournamentName: $tournamentName){
+  id
   name
   username
   rules
   restrictions
   participants{
+    id
     name
     status
   }
@@ -95,11 +102,13 @@ deleteParticipant(name: $name, tournamentName: $tournamentName){
 export const ADD_PARTICIPANT = gql`
 mutation addParticipant($tournamentName: String!, $name: String!){
     addParticipant(tournamentName: $tournamentName, name: $name){
+    id
     name
     username
     rules
     restrictions
     participants {
+        id
         name
         status
     }
@@ -110,11 +119,13 @@ mutation addParticipant($tournamentName: String!, $name: String!){
 export const DELETE_TOURNAMENT_QUERY = gql`
 mutation($tournamentName: String!){
     deleteTournament(tournamentName: $tournamentName){
+      id
       name
       rules
       username
       restrictions
       participants{
+        id
         name
         status
       }
@@ -128,8 +139,10 @@ mutation($tournamentName: String!){
 export const START_GAME_QUERY = gql`
 mutation($tournamentName: String!){
   startGame(tournamentName: $tournamentName){
+    id
     name
     fights{
+      id
       fighterOne
       fighterTwo
       concluded
@@ -142,11 +155,13 @@ mutation($tournamentName: String!){
 export const DELETE_RESTRICTION = gql`
 mutation ($restriction: String!, $tournamentName: String!){
 deleteRestriction(restriction: $restriction, tournamentName: $tournamentName){
+  id
   name
   username
   rules
   restrictions
   participants{
+    id
     name
     status
   }
@@ -157,6 +172,7 @@ deleteRestriction(restriction: $restriction, tournamentName: $tournamentName){
 export const ADD_RESTRICTION = gql`
 mutation($tournamentName: String!, $restriction: String!){
     addRestriction(tournamentName: $tournamentName, restriction: $restriction){
+    id
     name
     username
     rules
@@ -168,16 +184,19 @@ mutation($tournamentName: String!, $restriction: String!){
 export const START_NEXT_ROUND_QUERY = gql`
 mutation($tournamentName: String!){
 startNextRound(tournamentName: $tournamentName){
+id
 name
 username
 rules
 restrictions
 participants{
+  id
   name
   status
 }
 active
 fights{
+  id
   fighterOne
   fighterTwo
   concluded
@@ -192,11 +211,13 @@ winner
 export const DELETE_RULE = gql`
 mutation ($rule: String!, $tournamentName: String!){
 deleteRule(rule: $rule, tournamentName: $tournamentName){
+  id
   name
   username
   rules
   restrictions
   participants{
+    id
     name
     status
   }
@@ -206,6 +227,7 @@ deleteRule(rule: $rule, tournamentName: $tournamentName){
 export const ADD_RULE = gql`
 mutation($tournamentName: String!, $rule: String!){
     addRule(tournamentName: $tournamentName, rule: $rule){
+    id
     name
     username
     rules
@@ -220,16 +242,18 @@ mutation createTournament(
        createTournament(
            tournamentName: $tournamentName
        ){
-       name
-       username
-       round
-       rules
-       restrictions
-       participants{
-       name
-       status
-       }
-       active
+        id
+        name
+        rules
+        username
+        restrictions
+        participants{
+          id
+          name
+          status
+        }
+        round
+        active
    }
 }
 `;
@@ -237,16 +261,19 @@ mutation createTournament(
 export const END_FIGHT_QUERY = gql`
 mutation($tournamentName: String!, $winner: String!){
 endFight(tournamentName: $tournamentName, winner: $winner){
+id
 name
 username
 rules
 restrictions
 participants{
+  id
   name
   status
 }
 active
 fights{
+  id
   fighterOne
   fighterTwo
   concluded
