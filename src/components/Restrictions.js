@@ -11,14 +11,9 @@ function Restrictions({restrictions, tournamentName, hidden}) {
 
     const [addRestriction] = useMutation(ADD_RESTRICTION, {
         update(proxy, result){
-            const data = proxy.readQuery({
-                query: FETCH_TOURNAMENT_QUERY,
-                variables: {tournamentName}
-            })
-            data.getTournament = result.data.addRestriction
             proxy.writeQuery({
                 query: FETCH_TOURNAMENT_QUERY,
-                data,
+                data: {getTournament: result.data.addRestriction},
                 variables: {tournamentName}
             })
             setNewRestriction("")

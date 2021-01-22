@@ -8,16 +8,11 @@ function Restriction({restriction, tournamentName, hidden}) {
 
     const [deleteRestriction] = useMutation(DELETE_RESTRICTION, {
           update(proxy, result){
-            const data = proxy.readQuery({
-                query: FETCH_TOURNAMENT_QUERY,
-                variables: {tournamentName}
-            })
-            data.getTournament = result.data.deleteRestriction
             proxy.writeQuery({
-                query: FETCH_TOURNAMENT_QUERY,
-                data,
-                variables: {tournamentName}
-            })
+              query: FETCH_TOURNAMENT_QUERY,
+              data: {getTournament: result.data.deleteRestriction},
+              variables: {tournamentName}
+          })
         },
         onError(err) {
             console.log(err);

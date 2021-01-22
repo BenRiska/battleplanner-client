@@ -12,14 +12,9 @@ function Rules({rules, tournamentName, hidden}) {
 
     const [addRule] = useMutation(ADD_RULE, {
         update(proxy, result){
-            const data = proxy.readQuery({
-                query: FETCH_TOURNAMENT_QUERY,
-                variables: {tournamentName}
-            })
-            data.getTournament = result.data.addRule
             proxy.writeQuery({
                 query: FETCH_TOURNAMENT_QUERY,
-                data,
+                data: {getTournament: result.data.addRule},
                 variables: {tournamentName}
             })
             setNewRule("")

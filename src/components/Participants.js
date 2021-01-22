@@ -11,14 +11,9 @@ function Participants({participants, tournamentName, hidden}) {
 
     const [addParticipant] = useMutation(ADD_PARTICIPANT, {
         update(proxy, result){
-            const data = proxy.readQuery({
-                query: FETCH_TOURNAMENT_QUERY,
-                variables: {tournamentName}
-            })
-            data.getTournament = result.data.addParticipant
             proxy.writeQuery({
                 query: FETCH_TOURNAMENT_QUERY,
-                data,
+                data: {getTournament: result.data.addParticipant},
                 variables: {tournamentName}
             })
             setNewParticipant("")

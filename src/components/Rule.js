@@ -8,16 +8,11 @@ function Rule({rule, tournamentName, hidden}) {
 
     const [deleteRule] = useMutation(DELETE_RULE, {
           update(proxy, result){
-            const data = proxy.readQuery({
-                query: FETCH_TOURNAMENT_QUERY,
-                variables: {tournamentName}
-            })
-            data.getTournament = result.data.deleteRule
             proxy.writeQuery({
-                query: FETCH_TOURNAMENT_QUERY,
-                data,
-                variables: {tournamentName}
-            })
+              query: FETCH_TOURNAMENT_QUERY,
+              data: {getTournament: result.data.deleteRule},
+              variables: {tournamentName}
+          })
         },
         onError(err) {
             console.log(err);

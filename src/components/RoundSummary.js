@@ -1,20 +1,26 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import "../styles/tournament/RoundSummary.css"
 import {useMutation} from '@apollo/react-hooks';
-import {DELETE_TOURNAMENT_QUERY, START_NEXT_ROUND_QUERY} from "../utils/queries"
+import {useHistory} from "react-router-dom"
+import { AuthContext } from '../context/auth';
+import {DELETE_TOURNAMENT_QUERY, FETCH_TOURNAMENTS_QUERY, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 
 
-function RoundSummary({tournament}) {
+function RoundSummary({tournament, executeStartNextRound}) {
 
-    const [startNextRound] = useMutation(START_NEXT_ROUND_QUERY, {
-        onError: (err) => console.log(err)
-    })
+    const history = useHistory()
 
-    const executeStartNextRound = () => {
-        startNextRound({variables: {tournamentName: tournament.name}})
-    }
+    const { user } = useContext(AuthContext);
 
     const [deleteTournament] = useMutation(DELETE_TOURNAMENT_QUERY, {
+        update(proxy, result){ 
+            proxy.writeQuery({
+              query: FETCH_TOURNAMENTS_QUERY,
+              data: {getTournaments: result.data.deleteTournament},
+              variables: {username: user?.username}
+          })
+          history.push("/")
+      },
         onError(err) {
             console.log(err);
           }
@@ -26,7 +32,7 @@ function RoundSummary({tournament}) {
 
     return (
         <div className="roundSummary">
-            {tournament?.fights.length < 2 ? 
+            {tournament?.fights?.length < 2 ? 
             <div className="winners__card">
                 <h2>Congrats</h2>
                 <p>{tournament?.winner}!</p>

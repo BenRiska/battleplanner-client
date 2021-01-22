@@ -102,18 +102,28 @@ deleteParticipant(name: $name, tournamentName: $tournamentName){
 export const ADD_PARTICIPANT = gql`
 mutation addParticipant($tournamentName: String!, $name: String!){
     addParticipant(tournamentName: $tournamentName, name: $name){
-    id
-    name
-    username
-    rules
-    restrictions
-    participants {
         id
         name
-        status
-    }
+        username
+        rules
+        restrictions
+        participants{
+          id
+          name
+          status
+        }
+        active
+        fights{
+          id
+          fighterOne
+          fighterTwo
+          concluded
+          winner
+        }
+        round
+        winner
+        }
   }
-}
 `
 
 export const DELETE_TOURNAMENT_QUERY = gql`
@@ -139,15 +149,26 @@ mutation($tournamentName: String!){
 export const START_GAME_QUERY = gql`
 mutation($tournamentName: String!){
   startGame(tournamentName: $tournamentName){
-    id
-    name
-    fights{
-      id
-      fighterOne
-      fighterTwo
-      concluded
-    }
-    round
+        id
+        name
+        username
+        rules
+        restrictions
+        participants{
+          id
+          name
+          status
+        }
+        active
+        fights{
+          id
+          fighterOne
+          fighterTwo
+          concluded
+          winner
+        }
+        round
+        winner
   }
 }
 `
@@ -244,18 +265,26 @@ mutation createTournament(
        ){
         id
         name
-        rules
         username
+        rules
         restrictions
         participants{
           id
           name
           status
         }
-        round
         active
+        fights{
+          id
+          fighterOne
+          fighterTwo
+          concluded
+          winner
+        }
+        round
+        winner
+        }
    }
-}
 `;
 
 export const END_FIGHT_QUERY = gql`

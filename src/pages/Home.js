@@ -8,13 +8,15 @@ import Navbar from "../components/NavBar"
 import TournamentForm from '../components/TournamentForm';
 import TournamentCard from '../components/TournamentCard';
 
-function Home() {
+function Home({setCurrentTournament}) {
 
     const { user } = useContext(AuthContext);
 
     const { loading, error, data: { getTournaments: tournaments } = {}} = useQuery(FETCH_TOURNAMENTS_QUERY, {
         variables: {username: user?.username}
     })
+
+    console.log(setCurrentTournament)
 
     console.log(tournaments, error)
 
@@ -30,7 +32,7 @@ function Home() {
             (
                 <div className="home__grid">
                 <TournamentForm/>
-                {tournaments?.map(tournament => <TournamentCard key={tournament.name} tournament={tournament}/>)
+                {tournaments?.map(tournament => <TournamentCard key={tournament?.name} setCurrentTournament={setCurrentTournament} tournament={tournament}/>)
                 }
                </div>
             )

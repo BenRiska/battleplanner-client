@@ -10,17 +10,17 @@ function TournamentCard({tournament}) {
                 <div className="tournamentCard__info">
                     <div className="tournamentCard__left">
                         <img src="./team-icon.svg" alt="team icon"/>
-                        <span>{tournament.participants.length}</span>
+                        <span>{tournament?.participants?.length}</span>
                     </div>
                     <div className="tournamentCard__right">
-                        {tournament.active && <p className="active-tab">Active</p>}
-                        {!tournament.active && 
-                        tournament.round === 0
+                        {tournament?.active && <p className="active-tab">Active</p>}
+                        {!tournament?.active && 
+                        tournament?.round === 0
                         && <p className="start-tab">Start</p>}
-                        {!tournament.active && 
-                        tournament.round > 0
+                        {!tournament?.active && 
+                        tournament?.round > 0
                         && <p className="complete-tab">Complete</p>}
-                        <Link to={`/tournament/${tournament.name}`}>View</Link>
+                        <Link to={`/tournament/${tournament?.name}`}>View</Link>
                     </div>
                 </div>
             </div>

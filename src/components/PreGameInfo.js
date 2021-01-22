@@ -3,7 +3,7 @@ import {useMutation} from '@apollo/react-hooks';
 import {useHistory} from "react-router-dom"
 import { AuthContext } from '../context/auth';
 import "../styles/tournament/PreGameInfo.css"
-import {START_GAME_QUERY, DELETE_TOURNAMENT_QUERY, FETCH_TOURNAMENTS_QUERY} from "../utils/queries"
+import {START_GAME_QUERY, DELETE_TOURNAMENT_QUERY, FETCH_TOURNAMENTS_QUERY, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 
 
 function PreGameInfo({tournament}) {
@@ -13,15 +13,10 @@ function PreGameInfo({tournament}) {
     const history = useHistory()
 
     const [deleteTournament] = useMutation(DELETE_TOURNAMENT_QUERY, {
-        update(proxy, result){
-            const data = proxy.readQuery({
-                query: FETCH_TOURNAMENTS_QUERY,
-                variables: {username: user?.username}
-            })
-            data.getTournaments = result.data.deleteTournament      
+        update(proxy, result){ 
               proxy.writeQuery({
                 query: FETCH_TOURNAMENTS_QUERY,
-                data,
+                data: {getTournaments: result.data.deleteTournament},
                 variables: {username: user?.username}
             })
             history.push("/")
@@ -33,6 +28,13 @@ function PreGameInfo({tournament}) {
     })
 
     const [StartGame] = useMutation(START_GAME_QUERY, {
+        update(proxy, result){ 
+            proxy.writeQuery({
+              query: FETCH_TOURNAMENT_QUERY,
+              data: {getTournament: result.data.startGame},
+              variables: {username: user?.username}
+          })
+      },
         onError(err) {
             console.log(err);
           },

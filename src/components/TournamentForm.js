@@ -3,13 +3,10 @@ import { useMutation } from '@apollo/react-hooks';
 import { AuthContext } from '../context/auth';
 import "../styles/home/TournamentForm.css"
 import {CREATE_TOURNAMENT, FETCH_TOURNAMENTS_QUERY} from "../utils/queries"
-import {useHistory} from "react-router-dom"
 
 function TournamentForm() {
 
     const [tournamentName, setTournamentName] = useState("")
-
-    const history = useHistory()
 
     const { user } = useContext(AuthContext);
 

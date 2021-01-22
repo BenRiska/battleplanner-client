@@ -8,14 +8,9 @@ function Participant({participant, tournamentName, hidden}) {
 
     const [deleteParticipant] = useMutation(DELETE_PARTICIPANT, {
           update(proxy, result){
-            const data = proxy.readQuery({
-                query: FETCH_TOURNAMENT_QUERY,
-                variables: {tournamentName}
-            })
-            data.getTournament = result.data.deleteParticipant
             proxy.writeQuery({
                 query: FETCH_TOURNAMENT_QUERY,
-                data,
+                data: {getTournament: result.data.deleteParticipant},
                 variables: {tournamentName}
             })
         },

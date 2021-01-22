@@ -19,7 +19,7 @@ function Tournament() {
 
     const { loading, error, data: { getTournament: tournament } = {}} = useQuery(FETCH_TOURNAMENT_QUERY, {
       onCompleted: (data) => {
-        const completedFights = data.getTournament.fights.filter(fight => (fight.concluded === true))
+        const completedFights = data?.getTournament?.fights?.filter(fight => (fight.concluded === true))
 
         let winnerList = []
         let loserList = []
@@ -50,7 +50,7 @@ function Tournament() {
                 {tournament?.round === 0 ? (
                   <PreGameInfo tournament={tournament}/>
                 ): (
-                  <TournamentPanel tournament={tournament}/>
+                  <TournamentPanel setRoundLosers={setRoundLosers} setRoundWinners={setRoundWinners} tournament={tournament}/>
                 )}
                 {tournament?.active && <PlayerStatusBar winners={roundWinners} losers={roundLosers}/>}
             </div>
