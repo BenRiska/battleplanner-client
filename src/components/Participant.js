@@ -14,6 +14,9 @@ function Participant({participant, tournamentName, hidden}) {
                 variables: {tournamentName}
             })
         },
+        refetchQueries: [
+          {query: FETCH_TOURNAMENT_QUERY, variables: {tournamentName}}
+        ],
         onError(err) {
             console.log(err);
           },

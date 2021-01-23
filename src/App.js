@@ -9,18 +9,14 @@ import AuthRoute from './utils/AuthRoute';
 
 function App() {
 
-  const [currentTournament, setCurrentTournament] = useState(null)
-
-  console.log(setCurrentTournament)
-
   return (
     <AuthProvider>
       <Router>
           <Switch>
-            <AuthRoute exact setCurrentTournament={setCurrentTournament} redirectIfNotSignedIn path="/" component={Home} />
+            <AuthRoute exact redirectIfNotSignedIn path="/" component={Home} />
             <AuthRoute exact path="/login" component={Login} />
             <AuthRoute exact path="/register" component={Register} />
-            <AuthRoute exact redirectIfNotSignedIn path="/tournament/:id" component={Tournament} currentTournament={currentTournament} />
+            <AuthRoute exact redirectIfNotSignedIn path="/tournament/:id" component={Tournament}  />
           </Switch>
       </Router>
     </AuthProvider>

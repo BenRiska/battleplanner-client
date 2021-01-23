@@ -8,7 +8,7 @@ import Navbar from "../components/NavBar"
 import TournamentForm from '../components/TournamentForm';
 import TournamentCard from '../components/TournamentCard';
 
-function Home({setCurrentTournament}) {
+function Home() {
 
     const { user } = useContext(AuthContext);
 
@@ -16,9 +16,9 @@ function Home({setCurrentTournament}) {
         variables: {username: user?.username}
     })
 
-    console.log(setCurrentTournament)
-
     console.log(tournaments, error)
+
+    if(loading) return <div>loading</div>
 
     return (
         <div className="home"> 
@@ -32,7 +32,7 @@ function Home({setCurrentTournament}) {
             (
                 <div className="home__grid">
                 <TournamentForm/>
-                {tournaments?.map(tournament => <TournamentCard key={tournament?.name} setCurrentTournament={setCurrentTournament} tournament={tournament}/>)
+                {tournaments?.map(tournament => <TournamentCard key={tournament?.name} tournament={tournament}/>)
                 }
                </div>
             )

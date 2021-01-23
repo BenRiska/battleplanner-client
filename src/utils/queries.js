@@ -40,17 +40,25 @@ export const FETCH_TOURNAMENTS_QUERY = gql`
 query ($username: String!){
 getTournaments(username: $username){
   id
+name
+username
+rules
+restrictions
+participants{
+  id
   name
-  rules
-  username
-  restrictions
-  participants{
-    id
-    name
-    status
-  }
-  round
-  active
+  status
+}
+active
+fights{
+  id
+  fighterOne
+  fighterTwo
+  concluded
+  winner
+}
+round
+winner
 }
 }
 `;
@@ -86,15 +94,25 @@ export const DELETE_PARTICIPANT = gql`
 mutation ($name: String!, $tournamentName: String!){
 deleteParticipant(name: $name, tournamentName: $tournamentName){
   id
+name
+username
+rules
+restrictions
+participants{
+  id
   name
-  username
-  rules
-  restrictions
-  participants{
-    id
-    name
-    status
-  }
+  status
+}
+active
+fights{
+  id
+  fighterOne
+  fighterTwo
+  concluded
+  winner
+}
+round
+winner
 }
 }
 `
@@ -130,17 +148,25 @@ export const DELETE_TOURNAMENT_QUERY = gql`
 mutation($tournamentName: String!){
     deleteTournament(tournamentName: $tournamentName){
       id
-      name
-      rules
-      username
-      restrictions
-      participants{
-        id
-        name
-        status
-      }
-      round
-      active
+name
+username
+rules
+restrictions
+participants{
+  id
+  name
+  status
+}
+active
+fights{
+  id
+  fighterOne
+  fighterTwo
+  concluded
+  winner
+}
+round
+winner
     }
   }
 
@@ -177,15 +203,25 @@ export const DELETE_RESTRICTION = gql`
 mutation ($restriction: String!, $tournamentName: String!){
 deleteRestriction(restriction: $restriction, tournamentName: $tournamentName){
   id
+name
+username
+rules
+restrictions
+participants{
+  id
   name
-  username
-  rules
-  restrictions
-  participants{
-    id
-    name
-    status
-  }
+  status
+}
+active
+fights{
+  id
+  fighterOne
+  fighterTwo
+  concluded
+  winner
+}
+round
+winner
 }
 }
 `
@@ -193,11 +229,26 @@ deleteRestriction(restriction: $restriction, tournamentName: $tournamentName){
 export const ADD_RESTRICTION = gql`
 mutation($tournamentName: String!, $restriction: String!){
     addRestriction(tournamentName: $tournamentName, restriction: $restriction){
-    id
-    name
-    username
-    rules
-    restrictions
+      id
+name
+username
+rules
+restrictions
+participants{
+  id
+  name
+  status
+}
+active
+fights{
+  id
+  fighterOne
+  fighterTwo
+  concluded
+  winner
+}
+round
+winner
   }
 }
 `
@@ -233,25 +284,51 @@ export const DELETE_RULE = gql`
 mutation ($rule: String!, $tournamentName: String!){
 deleteRule(rule: $rule, tournamentName: $tournamentName){
   id
+name
+username
+rules
+restrictions
+participants{
+  id
   name
-  username
-  rules
-  restrictions
-  participants{
-    id
-    name
-    status
-  }
+  status
+}
+active
+fights{
+  id
+  fighterOne
+  fighterTwo
+  concluded
+  winner
+}
+round
+winner
 }
 }`
 
 export const ADD_RULE = gql`
 mutation($tournamentName: String!, $rule: String!){
     addRule(tournamentName: $tournamentName, rule: $rule){
-    id
-    name
-    username
-    rules
+      id
+name
+username
+rules
+restrictions
+participants{
+  id
+  name
+  status
+}
+active
+fights{
+  id
+  fighterOne
+  fighterTwo
+  concluded
+  winner
+}
+round
+winner
   }
 }
 `

@@ -17,7 +17,6 @@ function NavBar({alterImageRoute}) {
           <div className="navbar__right">
             <div className="navbar__links">
             <Link to="/">Home</Link>
-            <Link to="/">About</Link>
             <p onClick={logout}>Logout</p>
             </div>
             <img src={alterImageRoute ? "../ring-right.svg" : "./ring-right.svg"} alt="icon"/>
