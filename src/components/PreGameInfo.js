@@ -22,7 +22,7 @@ function PreGameInfo({tournament}) {
             history.push("/")
         },
         onError(err) {
-          console.log(err);
+          alert(err);
         },
         variables: {tournamentName: tournament?.name}
     })
@@ -36,7 +36,7 @@ function PreGameInfo({tournament}) {
           })
       },
         onError(err) {
-            console.log(err);
+            alert(err);
           },
         variables: {tournamentName: tournament?.name}
     })
@@ -50,7 +50,7 @@ function PreGameInfo({tournament}) {
         ){
             StartGame()
         } else{
-            console.log("add people")
+            alert("Participants count must be divisible by four.")
         }
     }
 

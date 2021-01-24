@@ -21,10 +21,11 @@ function TournamentForm() {
             data: {getTournaments: [result.data.createTournament, ...data.getTournaments]},
             variables: {username: user?.username}
         })
+        setTournamentName("")
     },
         variables: {tournamentName},
         onError(err) {
-          console.log(err);
+          alert(err);
         }
       });
 
@@ -39,7 +40,7 @@ function TournamentForm() {
             <h1>New Tournament</h1>
             <div>
                 <div className="tournament__input">
-                    <input onChange={e => setTournamentName(e.target.value)}  placeholder="Name.." name="name" type="text"/>
+                    <input value={tournamentName} onChange={e => setTournamentName(e.target.value)}  placeholder="Name.." name="name" type="text"/>
                 </div>
                 <button onClick={e => executeQuery(e)}>Create</button>
             </div>

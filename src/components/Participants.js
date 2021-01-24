@@ -22,7 +22,7 @@ function Participants({participants, tournamentName, hidden}) {
           {query: FETCH_TOURNAMENT_QUERY, variables: {tournamentName}}
         ],
         onError(err) {
-            console.log(err);
+            alert(err);
           },
         variables: {tournamentName: tournamentName, name: newParticipant}
     })

@@ -2,6 +2,7 @@
   flex: 0.25;
   height: 90vh;
   background-color: var(--main-light-color);
+  overflow: scroll;
 }
 
 .editTournament__tabs {
@@ -143,4 +144,11 @@
 .edit-confirm > p:nth-child(2) {
   background-color: #54d852;
   border-bottom-right-radius: 10px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .editTournament {
+    width: 100vw;
+    height: 100%;
+  }
 }

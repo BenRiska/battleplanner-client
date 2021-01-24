@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch} from 'react-router-dom';
 import { AuthProvider } from './context/auth';
-import {useState} from "react"
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';

@@ -3,7 +3,7 @@ import "../styles/tournament/RoundSummary.css"
 import {useMutation} from '@apollo/react-hooks';
 import {useHistory} from "react-router-dom"
 import { AuthContext } from '../context/auth';
-import {DELETE_TOURNAMENT_QUERY, FETCH_TOURNAMENTS_QUERY, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
+import {DELETE_TOURNAMENT_QUERY, FETCH_TOURNAMENTS_QUERY} from "../utils/queries"
 
 
 function RoundSummary({tournament, executeStartNextRound}) {
@@ -22,7 +22,7 @@ function RoundSummary({tournament, executeStartNextRound}) {
           history.push("/")
       },
         onError(err) {
-            console.log(err);
+            alert(err);
           }
     })
 

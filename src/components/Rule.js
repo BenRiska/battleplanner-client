@@ -15,7 +15,7 @@ function Rule({rule, tournamentName, hidden}) {
           })
         },
         onError(err) {
-            console.log(err);
+            alert(err);
           },
         variables: {tournamentName: tournamentName, rule: rule}
     })

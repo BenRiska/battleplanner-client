@@ -149,3 +149,62 @@
 .card-vs {
   font-size: 2rem;
 }
+
+@media only screen and (max-width: 1200px) {
+  .tournamentPanel {
+    flex: 1;
+    width: 100vw;
+  }
+  .tournamentPanel__main {
+    flex-direction: column;
+  }
+
+  .tournamentPanel__current-fight {
+    margin: 1rem;
+  }
+
+  .vs {
+    font-size: 2rem;
+  }
+
+  .tournamentPanel__options {
+    margin: 1rem;
+  }
+
+  .current-fighter > img {
+    height: 5vh;
+  }
+
+  .current-fighter > p {
+    font-size: 2rem;
+  }
+
+  .tournamentPanel__options {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .tournamentPanel__options-box,
+  .tournamentPanel__round-card {
+    margin-bottom: 0rem;
+    height: 100px !important;
+    margin-right: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .tournamentPanel__options-box > button {
+    padding: 0.7rem 1.3rem;
+  }
+
+  .current-fighter > button {
+    padding: 0.7rem 1.3rem;
+  }
+
+  .tournamentPanel__upcoming {
+    grid-template-columns: 1fr;
+  }
+
+  .upcoming__sign > img {
+    display: none;
+  }
+}

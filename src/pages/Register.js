@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext} from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import "../styles/register/register.css"
 import {Link} from "react-router-dom"
@@ -10,7 +10,6 @@ import { useForm } from '../utils/hooks';
 function Register(props) {
 
     const context = useContext(AuthContext);
-    const [errors, setErrors] = useState({});
 
     const { onChange, onSubmit, values } = useForm(registerUser, {
         username: '',
@@ -19,7 +18,7 @@ function Register(props) {
         confirmPassword: ''
     });
 
-    const [addUser, { loading }] = useMutation(REGISTER_USER, {
+    const [addUser] = useMutation(REGISTER_USER, {
         update(
           _,
           {
@@ -30,7 +29,10 @@ function Register(props) {
           props.history.push('/');
         },
         onError(err) {
-          setErrors(err.graphQLErrors[0].extensions.exception.errors);
+          alert(
+            err.graphQLErrors[0].extensions.exception.errors["username"],
+            err.graphQLErrors[0].extensions.exception.errors["password"],
+           );
         },
         variables: values
       });
@@ -38,8 +40,6 @@ function Register(props) {
     function registerUser() {
         addUser();
       }
-
-      console.log(errors, loading)
 
     return (
         <div className="register">

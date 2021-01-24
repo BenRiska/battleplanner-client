@@ -19,8 +19,6 @@ function TournamentPanel({tournament, setRoundLosers, setRoundWinners}) {
     useEffect(() => {
         let upcomingFights = tournament?.fights?.filter(fight => (fight.concluded === false))
 
-        console.log(upcomingFights)
-
         if(upcomingFights?.length === 1 && upcomingFights){
             setCurrentFight(upcomingFights[0])
         } else if (upcomingFights){
@@ -28,11 +26,10 @@ function TournamentPanel({tournament, setRoundLosers, setRoundWinners}) {
             upcomingFights = upcomingFights.slice(1, upcomingFights.length)
             setRemainingFights(upcomingFights)
         }
-    }, [])
+    }, [tournament])
 
     const [endFight] = useMutation(END_FIGHT_QUERY, {
         update(proxy, result){ 
-            console.log(result.data.endFight)
             proxy.writeQuery({
               query: FETCH_TOURNAMENT_QUERY,
               data: {getTournament: result.data.endFight},
@@ -70,7 +67,7 @@ function TournamentPanel({tournament, setRoundLosers, setRoundWinners}) {
 
       },
         onError(err) {
-            console.log(err);
+            alert(err);
           }
     })
 
@@ -84,7 +81,7 @@ function TournamentPanel({tournament, setRoundLosers, setRoundWinners}) {
           history.push("/")
       },
         onError(err) {
-            console.log(err);
+            alert(err);
           }
     })
 
@@ -125,7 +122,7 @@ function TournamentPanel({tournament, setRoundLosers, setRoundWinners}) {
         setRoundLosers(loserList)
         setRoundWinners(winnerList)
       },
-        onError: (err) => console.log(err)
+        onError: (err) => alert(err)
     })
 
     const executeStartNextRound = () => {

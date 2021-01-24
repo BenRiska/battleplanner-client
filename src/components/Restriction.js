@@ -15,7 +15,7 @@ function Restriction({restriction, tournamentName, hidden}) {
           })
         },
         onError(err) {
-            console.log(err);
+            alert(err);
           },
         variables: {tournamentName: tournamentName, restriction: restriction}
     })

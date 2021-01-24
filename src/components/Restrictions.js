@@ -19,7 +19,7 @@ function Restrictions({restrictions, tournamentName, hidden}) {
             setNewRestriction("")
         },
         onError(err) {
-            console.log(err.graphQLErrors[0].extensions.exception.errors);
+            alert(err)
           },
         variables: {tournamentName: tournamentName, restriction: newRestriction}
     })

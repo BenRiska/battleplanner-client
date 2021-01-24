@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext} from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import {Link} from "react-router-dom"
 import "../styles/login/login.css"
@@ -10,14 +10,13 @@ import { useForm } from '../utils/hooks';
 function Login(props) {
 
     const context = useContext(AuthContext);
-  const [errors, setErrors] = useState({});
 
   const { onChange, onSubmit, values } = useForm(loginUserCallback, {
     username: '',
     password: ''
   });
 
-  const [loginUser, { loading }] = useMutation(LOGIN_USER, {
+  const [loginUser] = useMutation(LOGIN_USER, {
     update(
       _,
       {
@@ -28,7 +27,11 @@ function Login(props) {
       props.history.push('/');
     },
     onError(err) {
-      setErrors(err);
+      alert(
+        err.graphQLErrors[0].extensions.exception.errors["general"],
+        err.graphQLErrors[0].extensions.exception.errors["username"],
+        err.graphQLErrors[0].extensions.exception.errors["password"],
+       );
     },
     variables: values
   });
@@ -36,8 +39,6 @@ function Login(props) {
   function loginUserCallback() {
     loginUser();
   }
-
-  console.log(errors, loading)
 
     return (
         <div className="login">

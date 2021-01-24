@@ -20,7 +20,7 @@ function Rules({rules, tournamentName, hidden}) {
             setNewRule("")
         },
         onError(err) {
-            console.log(err);
+            alert(err);
           },
         variables: {tournamentName: tournamentName, rule: newRule}
     })

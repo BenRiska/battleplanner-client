@@ -47,3 +47,9 @@
   color: var(--main-light-color);
   font-size: 2rem;
 }
+
+@media only screen and (max-width: 1200px) {
+  .preGameInfo {
+    margin-top: 4rem;
+  }
+}

@@ -10,6 +10,7 @@ function NavBar({alterImageRoute}) {
 
     return (
         <div className="navbar">
+          <div className="navbar__container">
           <div className="navbar__left">
             <img src={alterImageRoute ? "../ring.svg" : "./ring.svg"} alt="icon"/>
             <Link to="/">Tournament Planner</Link>
@@ -20,6 +21,12 @@ function NavBar({alterImageRoute}) {
             <p onClick={logout}>Logout</p>
             </div>
             <img src={alterImageRoute ? "../ring-right.svg" : "./ring-right.svg"} alt="icon"/>
+          </div>
+          </div>
+          <div className="mobile__nav">
+                <Link to="/">Home</Link>
+                <p onClick={logout}>Logout</p>
+            
           </div>
         </div>
         )

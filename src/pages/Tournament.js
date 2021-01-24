@@ -17,7 +17,7 @@ function Tournament() {
 
     const {id} = useParams()
 
-    const { loading, error, data: { getTournament: tournament } = {}} = useQuery(FETCH_TOURNAMENT_QUERY, {
+    const { loading, data: { getTournament: tournament } = {}} = useQuery(FETCH_TOURNAMENT_QUERY, {
       fetchPolicy: "network-only",
       onCompleted: (data) => {
         const completedFights = data?.getTournament?.fights?.filter(fight => (fight.concluded === true))
@@ -40,8 +40,6 @@ function Tournament() {
 
       },
       variables: {tournamentName: id}})
-
-      console.log(loading, error)
 
       if(loading) return <div>loading</div>
 

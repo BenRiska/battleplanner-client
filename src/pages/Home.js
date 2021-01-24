@@ -12,13 +12,9 @@ function Home() {
 
     const { user } = useContext(AuthContext);
 
-    const { loading, error, data: { getTournaments: tournaments } = {}} = useQuery(FETCH_TOURNAMENTS_QUERY, {
+    const { loading, data: { getTournaments: tournaments } = {}} = useQuery(FETCH_TOURNAMENTS_QUERY, {
         variables: {username: user?.username}
     })
-
-    console.log(tournaments, error)
-
-    if(loading) return <div>loading</div>
 
     return (
         <div className="home"> 
