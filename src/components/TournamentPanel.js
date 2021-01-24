@@ -167,7 +167,7 @@ function TournamentPanel({tournament, setRoundLosers, setRoundWinners}) {
                     </div>
                     <div className="tournamentPanel__round-card">
                         <span>Final</span>
-                        <span>{16}</span>
+                        <span>{tournament?.fights?.length * 2}</span>
                     </div>
                 </div>
             </div>
