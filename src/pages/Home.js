@@ -19,6 +19,7 @@ function Home() {
     return (
         <div className="home"> 
             <Navbar/>
+            <TournamentForm/>
             {loading ? (
                 <div>
                     <h2>Loading</h2>
@@ -27,7 +28,6 @@ function Home() {
             : 
             (
                 <div className="home__grid">
-                <TournamentForm/>
                 {tournaments?.map(tournament => <TournamentCard key={tournament?.name} tournament={tournament}/>)
                 }
                </div>

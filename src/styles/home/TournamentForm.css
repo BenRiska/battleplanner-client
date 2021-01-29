@@ -1,45 +1,50 @@
 .tournamentForm {
-  width: 100%;
-  background: #f4f4f2;
-  border-radius: 10px;
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  text-align: center;
-  height: 300px;
-  justify-content: space-around;
-}
-
-.tournamentForm > h1 {
-  margin-bottom: 2rem;
-  color: var(--main-dark-color);
-}
-
-.tournamentForm > div {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  position: relative;
 }
 
-.tournament__input > input {
-  width: 80%;
+.tournamentForm > input {
   height: 3rem;
-  border: none;
-  border-radius: 10px;
+  width: 500px;
   font-size: 1.8rem;
-  background-color: var(--main-light-color);
-  color: var(--main-dark-color);
+  border-radius: 5px;
+  box-shadow: 0px 6px 20px 1px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0px 6px 20px 1px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0px 6px 20px 1px rgba(0, 0, 0, 0.24);
+  border: none;
 }
 
-.tournamentForm > div > button {
-  width: 120px;
-  padding: 1rem;
-  border-radius: 10px;
-  background-color: var(--main-light-color);
+.tournamentForm > button {
+  margin-top: 3rem;
+  padding: 0.7rem 2rem;
   border: none;
-  font-size: 1.5rem;
-  color: var(--main-dark-color);
+  border-radius: 5px;
+  font-size: 1.4rem;
+  font-weight: 500;
   cursor: pointer;
+  color: white;
+  background-color: #495464;
+  box-shadow: 0 19px 38px transparent, 0 15px 20px rgb(0 0 0 / 10%);
+}
+
+.tournamentForm > img {
+  position: absolute;
+  top: -98px;
+}
+
+@media only screen and (max-width: 550px) {
+  .tournamentForm > input {
+    width: 400px;
+    height: 2.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .tournamentForm > input {
+    width: 300px;
+  }
 }

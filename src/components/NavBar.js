@@ -1,4 +1,4 @@
-import React, { useContext} from 'react';
+import React, { useContext, useState} from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/NavBar.css"
 import { AuthContext } from '../context/auth';
@@ -6,28 +6,20 @@ import { AuthContext } from '../context/auth';
 
 function NavBar({alterImageRoute}) {
 
-  const { logout } = useContext(AuthContext);
+  const [popup, setPopup] = useState(false)
+
+  const { logout, user } = useContext(AuthContext);
 
     return (
         <div className="navbar">
-          <div className="navbar__container">
-          <div className="navbar__left">
-            <img src={alterImageRoute ? "../ring.svg" : "./ring.svg"} alt="icon"/>
-            <Link to="/">Tournament Planner</Link>
+          <Link to="/"><img src="./bp-logo.svg" alt="icon"/></Link>
+          <div onClick={() => setPopup(prev => !prev)} className="nav__box">
+            <img src="./nav-char.svg" alt=""/>
           </div>
-          <div className="navbar__right">
-            <div className="navbar__links">
-            <Link to="/">Home</Link>
-            <p onClick={logout}>Logout</p>
-            </div>
-            <img src={alterImageRoute ? "../ring-right.svg" : "./ring-right.svg"} alt="icon"/>
-          </div>
-          </div>
-          <div className="mobile__nav">
-                <Link to="/">Home</Link>
+          {popup && <div className="nav__box-content">
+                <h2>{user?.username}</h2>
                 <p onClick={logout}>Logout</p>
-            
-          </div>
+          </div>}
         </div>
         )
 }

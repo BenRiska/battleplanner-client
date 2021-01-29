@@ -37,13 +37,9 @@ function TournamentForm() {
 
     return (
         <div className="tournamentForm">
-            <h1>New Tournament</h1>
-            <div>
-                <div className="tournament__input">
-                    <input value={tournamentName} onChange={e => setTournamentName(e.target.value)}  placeholder="Name.." name="name" type="text"/>
-                </div>
+                <img src="./home-char.svg" alt="home character icon"/>
+                <input value={tournamentName} onChange={e => setTournamentName(e.target.value)}  placeholder="  Tournament Name.." name="name" type="text"/>
                 <button onClick={e => executeQuery(e)}>Create</button>
-            </div>
         </div>
     )
 }

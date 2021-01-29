@@ -5,7 +5,6 @@ import "../styles/home/TournamentCard.css"
 function TournamentCard({tournament}) {
         return (
         <div className="tournamentCard">
-            <div className="tournamentCard__inner">
                 <h2>{tournament?.name}</h2>
                 <div className="tournamentCard__info">
                     <div className="tournamentCard__left">
@@ -13,17 +12,20 @@ function TournamentCard({tournament}) {
                         <span>{tournament?.participants?.length}</span>
                     </div>
                     <div className="tournamentCard__right">
-                        {tournament?.active && <p className="active-tab">Active</p>}
+                        {tournament?.active && 
+                        <p className="active-tab">Active</p>}
                         {!tournament?.active && 
                         tournament?.round === 0
-                        && <p className="start-tab">Start</p>}
+                        && 
+                        <p className="start-tab">Ready</p>}
                         {!tournament?.active && 
                         tournament?.round > 0
-                        && <p className="complete-tab">Complete</p>}
+                        && 
+                        <p className="complete-tab">Complete</p>
+                        }
                         <Link to={`/tournament/${tournament?.name}`}>View</Link>
                     </div>
                 </div>
-            </div>
         </div>
     )
 }

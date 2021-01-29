@@ -1,47 +1,34 @@
 .tournamentCard {
   width: 100%;
-  height: 300px;
-  background-color: var(--main-grey-color);
+  height: 250px;
   border-radius: 10px;
-  display: grid;
-  place-items: center;
+  box-shadow: 0px 6px 20px 1px rgba(0, 0, 0, 0.24);
+  -webkit-box-shadow: 0px 6px 20px 1px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0px 6px 20px 1px rgba(0, 0, 0, 0.24);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
 }
 
-.tournamentCard__inner {
-  height: 83%;
-  width: 88%;
-  background-color: #f4f4f2;
-  border-radius: 10px;
-}
-
-.tournamentCard__inner > h2 {
-  width: 100%;
-  padding: 1rem;
-  background-color: var(--main-dark-color);
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  color: var(--main-light-color);
-  font-size: 1.8rem;
-  text-align: center;
+.tournamentCard > h2 {
+  font-size: 2.4rem;
+  font-weight: 400;
 }
 
 .tournamentCard__info {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  padding: 1.5rem 1rem 1rem 3rem;
 }
 
 .tournamentCard__left,
 .tournamentCard__right {
-  padding: 1rem;
-  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.tournamentCard__left {
-  padding-top: 2rem;
 }
 
 .tournamentCard__left > span {
@@ -62,23 +49,32 @@
 
 .tournamentCard__right > p {
   margin-top: 0.5rem;
+  color: white;
 }
 
 .tournamentCard__right > p.active-tab {
-  background-color: #85e56d;
+  background-color: #2db67c;
 }
 
 .tournamentCard__right > p.start-tab {
-  background-color: #e2db29;
-  color: var(--main-dark-color);
+  background-color: #f6af0d;
 }
 
 .tournamentCard__right > p.complete-tab {
-  background-color: #d85a52;
-  color: white;
+  background-color: #e01e5a;
 }
 
 .tournamentCard__right > a {
   background-color: var(--main-light-color);
   margin-top: 1.5rem;
+}
+
+@media only screen and (max-width: 400px) {
+  .tournamentCard {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .tournamentCard__info {
+    padding: 1.5rem 1rem 1rem 2rem;
+  }
 }
