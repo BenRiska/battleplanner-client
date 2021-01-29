@@ -57,6 +57,7 @@
   background-color: #495464;
   color: white;
   cursor: pointer;
+  box-shadow: 0 19px 38px transparent, 0 15px 20px rgb(0 0 0 / 10%);
 }
 
 .toggle__access {
@@ -112,6 +113,10 @@
 
   .login > form > h2 {
     font-size: 2rem;
+  }
+
+  .access__footer {
+    font-size: 0.8rem;
   }
 }
 

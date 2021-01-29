@@ -43,13 +43,15 @@ function Register(props) {
 
     return (
         <div className="register">
-            <h1>Organise Your Gaming Events With Ease</h1>
-            <img src="./shapes.svg" alt="hero icons"/>
+            <div className="access__header">
+              <img src="./bp-logo.svg" alt="app logo"/>
+              <h1>Clash Generator</h1>
+            </div>
             <form>
-                <h2>Register</h2>
+                <h2>Create an account</h2>
                 <div className="register__input">
                     <input
-                    placeholder="Username.."
+                    placeholder="  Username.."
                     name="username"
                     value={values.username}
                     onChange={onChange} 
@@ -58,7 +60,7 @@ function Register(props) {
                 <div className="register__input">
                     
                     <input 
-                    placeholder="Email.."
+                    placeholder="  Email.."
                     name="email"
                     value={values.email}
                     onChange={onChange} 
@@ -67,7 +69,7 @@ function Register(props) {
                 <div className="register__input">
                     
                     <input 
-                    placeholder="Password.."
+                    placeholder="  Password.."
                     name="password"
                     value={values.password}
                     onChange={onChange} 
@@ -76,15 +78,23 @@ function Register(props) {
                 <div className="register__input">
                     
                     <input 
-                    placeholder="Confirm Password.."
+                    placeholder="  Confirm Password.."
                     name="confirmPassword"
                     value={values.confirmPassword}
                     onChange={onChange} 
                     type="password"/>
                 </div>
-                <button onClick={onSubmit}>Create Account</button>
-                <p>Got an account already? <Link to="/login">Sign In</Link></p>
+                <button onClick={onSubmit}>Register</button>
             </form>
+            <div className="toggle__access">
+            <p>Already have an account?</p>
+            <Link to="/login">Sign In</Link>
+            </div>
+            <div className="access__footer">
+              <p>Privacy & Terms</p>
+              <p>Created by Benjamin Taylor</p>
+            </div>
+            <img src="./char1.png" alt="char logo"/>
         </div>
     )
 }
