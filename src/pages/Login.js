@@ -42,13 +42,16 @@ function Login(props) {
 
     return (
         <div className="login">
-            <h1>Organise Your Gaming Events With Ease</h1>
-            <img src="./shapes.svg" alt="hero icons"/>
+            <div className="access__header">
+            <img src="./bp-logo.svg" alt="app logo"/>
+            <h1>Clash Generator</h1>
+            </div>
             <form>
-                <h2>Login</h2>
+                <h2>Sign In</h2>
+                <p>Continue with your username and password</p>
                 <div className="login__input">
                     <input
-                    placeholder="Username.."
+                    placeholder="  Username.."
                     name="username"
                     value={values.username}
                     onChange={onChange} 
@@ -56,15 +59,23 @@ function Login(props) {
                 </div>
                 <div className="login__input">
                     <input 
-                    placeholder="Password.."
+                    placeholder="  Password.."
                     name="password"
                     value={values.password}
                     onChange={onChange} 
                     type="password"/>
                 </div>
-                <button onClick={onSubmit}>Login</button>
-                <p>Haven't got an account? <Link to="/register">Register</Link></p>
+                <button onClick={onSubmit}>Sign In</button>
             </form>
+            <div className="toggle__access">
+            <p>New to clash generator?</p>
+            <Link to="/register">Create an account</Link>
+            </div>
+            <div className="access__footer">
+              <p>Privacy & Terms</p>
+              <p>Created by Benjamin Taylor</p>
+            </div>
+            <img src="./char1.png" alt="char logo"/>
         </div>
     )
 }
