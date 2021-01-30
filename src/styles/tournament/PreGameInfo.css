@@ -1,8 +1,8 @@
 .preGameInfo {
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  background-color: #f4f4f2;
-  border-radius: 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .delete-tournament-btn {

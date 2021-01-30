@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {useQuery} from '@apollo/react-hooks';
-import EditTournament from '../components/EditTournament';
 import {useParams} from 'react-router-dom';
 import "../styles/tournament/Tournament.css"
 import NavBar from "../components/NavBar"
@@ -47,13 +46,11 @@ function Tournament() {
         <div className="tournament">
             <NavBar alterImageRoute/>
             <div className="tournament__main">
-                {!tournament?.winner && <EditTournament tournament={tournament}/>}
                 {tournament?.round === 0 ? (
                   <PreGameInfo tournament={tournament}/>
                 ): (
                   <TournamentPanel setRoundLosers={setRoundLosers} setRoundWinners={setRoundWinners} tournament={tournament}/>
                 )}
-                {tournament?.active && <PlayerStatusBar winners={roundWinners} losers={roundLosers}/>}
             </div>
         </div>
     )

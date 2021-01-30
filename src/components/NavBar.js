@@ -12,9 +12,9 @@ function NavBar({alterImageRoute}) {
 
     return (
         <div className="navbar">
-          <Link to="/"><img src="./bp-logo.svg" alt="icon"/></Link>
+          <Link to="/"><img src={alterImageRoute ? "../bp-logo.svg" : "./bp-logo.svg"} alt="icon"/></Link>
           <div onClick={() => setPopup(prev => !prev)} className="nav__box">
-            <img src="./nav-char.svg" alt=""/>
+            <img src={alterImageRoute ? "../nav-char.svg":"./nav-char.svg"} alt=""/>
           </div>
           {popup && <div className="nav__box-content">
                 <h2>{user?.username}</h2>

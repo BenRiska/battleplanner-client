@@ -59,14 +59,16 @@ function PreGameInfo({tournament}) {
             <button className="delete-tournament-btn" onClick={deleteTournament}>
                 Delete
             </button>
-            <h1>Set up your tournament before starting</h1>
-            <p>Make sure you have added:</p>
-            <ul>
-                <li>- Participants</li>
-                <li>- Rules (optional)</li>
-                <li>- Restrictions (optional)</li>
-            </ul>
-            <button onClick={StartTournament} className="start-tournament-btn">Start</button>
+
+            <div className="preGameInfo__header">
+                <h1>Configure</h1>
+                <p>Before we start you must add the following:</p>
+
+            </div>
+            
+            <button onClick={StartTournament} className="start-tournament-btn">
+                Start
+            </button>
         </div>
     )
 }
