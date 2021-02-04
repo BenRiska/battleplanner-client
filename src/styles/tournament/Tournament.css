@@ -1,10 +1,4 @@
 .tournament__main {
   display: flex;
-  align-items: center;
-}
-
-@media only screen and (max-width: 1200px) {
-  .tournament__main {
-    flex-direction: column;
-  }
+  justify-content: center;
 }

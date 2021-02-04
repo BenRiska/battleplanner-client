@@ -1,14 +1,21 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import {useMutation} from '@apollo/react-hooks';
 import {useHistory} from "react-router-dom"
 import { AuthContext } from '../context/auth';
 import "../styles/tournament/PreGameInfo.css"
 import {START_GAME_QUERY, DELETE_TOURNAMENT_QUERY, FETCH_TOURNAMENTS_QUERY, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
+import Participants from './Participants';
+import Rules from "./Rules"
+import Restrictions from "./Restrictions"
 
 
 function PreGameInfo({tournament}) {
 
+    
     const { user } = useContext(AuthContext);
+    const [participantFAQ, setParticipantFAQ] = useState(false)
+    const [rulesFAQ, setRulesFAQ] = useState(false)
+    const [restrictionFAQ, setRestrictionFAQ] = useState(false)
 
     const history = useHistory()
 
@@ -63,12 +70,49 @@ function PreGameInfo({tournament}) {
             <div className="preGameInfo__header">
                 <h1>Configure</h1>
                 <p>Before we start you must add the following:</p>
-
-            </div>
-            
-            <button onClick={StartTournament} className="start-tournament-btn">
+                <div className="preGameInfo__tabs">
+                    <div onClick={() => setParticipantFAQ(prev => !prev)} 
+                    style={{background: participantFAQ ? "#f8faff" : ""}}
+                    className="preGameInfo__tab">
+                            <h2>Participants</h2>
+                            {
+                                participantFAQ && 
+                                <ul>
+                                    <li>The total participant count must be divisible by 4.</li>
+                                    <li>There is no participant limit.</li>
+                                </ul>
+                            }
+                    </div>
+                    <div onClick={() => setRulesFAQ(prev => !prev)} className="preGameInfo__tab">
+                            <h2>Rules (Optional)</h2>
+                            {
+                                rulesFAQ && 
+                                <ul>
+                                    <li>Define the rules of your tournament so other players may view it on the tournament portal.</li>
+                                    <li>There is no rule limit.</li>
+                                </ul>
+                            }
+                    </div>
+                    <div onClick={() => setRestrictionFAQ(prev => !prev)} className="preGameInfo__tab">
+                            <h2>Restrictions (Optional)</h2>
+                            {
+                                restrictionFAQ && 
+                                <ul>
+                                    <li>Any restrictions you have defined may be randomly generated when needed.</li>
+                                    <li>There is no restriction limit.</li>
+                                </ul>
+                            }
+                    </div>
+                </div>
+                <button onClick={StartTournament} className="start-tournament-btn">
                 Start
-            </button>
+                </button>
+            </div>
+            <div className="preGameForm">
+                <Participants/>
+                <Rules/>
+                <Restrictions/>
+            </div>
         </div>
     )
 }

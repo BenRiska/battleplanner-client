@@ -5,7 +5,6 @@ import "../styles/tournament/Tournament.css"
 import NavBar from "../components/NavBar"
 import PreGameInfo from '../components/PreGameInfo';
 import TournamentPanel from '../components/TournamentPanel';
-import PlayerStatusBar from '../components/PlayerStatusBar';
 import {FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 
 
