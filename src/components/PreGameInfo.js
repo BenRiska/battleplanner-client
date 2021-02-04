@@ -109,9 +109,9 @@ function PreGameInfo({tournament}) {
                 </button>
             </div>
             <div className="preGameForm">
-                <Participants/>
-                <Rules/>
-                <Restrictions/>
+                <Participants tournamentName={tournament?.name} participants={tournament?.participants}/>
+                <Rules tournamentName={tournament?.name} rules={tournament?.rules}/>
+                <Restrictions tournamentName={tournament?.name} restrictions={tournament?.restrictions}/>
             </div>
         </div>
     )

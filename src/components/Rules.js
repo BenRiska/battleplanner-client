@@ -5,10 +5,9 @@ import {ADD_RULE, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 
 
 
-function Rules({rules, tournamentName, hidden}) {
+function Rules({rules, tournamentName}) {
 
     const [newRule, setNewRule] = useState("")
-    const [showForm, setShowForm] = useState(false)
 
     const [addRule] = useMutation(ADD_RULE, {
         update(proxy, result){
@@ -32,18 +31,14 @@ function Rules({rules, tournamentName, hidden}) {
     }
 
     return (
-        <div className="rules">
-            { !hidden && (<div className="editTournament__form-container">
-                <img onClick={() => setShowForm(prev => !prev)} className={showForm ? "form-active" : null} src="../close.svg" alt="close icon"/>
-                {showForm &&
-                (<div className="editTournament__form">
-                    <input value={newRule} onChange={e => setNewRule(e.target.value)} placeholder="Rule.." name="rule" type="text"/>
-                    <button type="submit" onClick={executeAddRule}>Submit</button>
-                </div>)
-                }
-            </div>)}
+        <div className="preGameInfo__column">
+            <h2>Rules</h2>
+            <div className="preGameInfo__form">
+                <input value={newRule} onChange={e => setNewRule(e.target.value)} placeholder="Rule.." name="rule" type="text"/>
+                <img onClick={executeAddRule} src="../close.svg" alt="add icon"/>
+            </div>
             {rules && rules.map(rule => (
-            <Rule key={rule} rule={rule} hidden={hidden} tournamentName={tournamentName}/>
+            <Rule key={rule} rule={rule} tournamentName={tournamentName}/>
             ))}
         </div>
     )

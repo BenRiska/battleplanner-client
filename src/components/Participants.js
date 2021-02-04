@@ -4,10 +4,9 @@ import { useMutation} from '@apollo/react-hooks';
 import {FETCH_TOURNAMENT_QUERY, ADD_PARTICIPANT} from "../utils/queries"
 
 
-function Participants({participants, tournamentName, hidden}) {
+function Participants({participants, tournamentName}) {
 
     const [newParticipant, setNewParticipant] = useState("")
-    const [showForm, setShowForm] = useState(false)
 
     const [addParticipant] = useMutation(ADD_PARTICIPANT, {
         update(proxy, result){
@@ -34,22 +33,16 @@ function Participants({participants, tournamentName, hidden}) {
     }
 
     return (
-        <div className="participants">
-            {!hidden && (<div className="editTournament__form-container">
-                <img onClick={() => setShowForm(prev => !prev)} className={showForm ? "form-active" : null} src="../close.svg" alt="close icon"/>
-                {showForm &&
-                (<div className="editTournament__form">
-                    <input value={newParticipant} onChange={e => setNewParticipant(e.target.value)} placeholder="Participant.." name="participant" type="text"/>
-                    <button onClick={executeAddParticipant}>
-                        <img src="../white-arrow.svg" alt="arrow icon"/>
-                    </button>
-                </div>)
-                }
-            </div>)}
+        <div className="preGameInfo__column">
+            <h2>Participants</h2>
+            <div className="preGameInfo__form">
+                <input value={newParticipant} onChange={e => setNewParticipant(e.target.value)} placeholder="Participant.." name="participant" type="text"/>
+                <img onClick={executeAddParticipant} src="../close.svg" alt="add icon"/>
+            </div>
             {participants && participants.map(participant => (
-                <Participant key={`participant = ${participant.name}`} participant={participant} hidden={hidden} tournamentName={tournamentName}/>))}
+                <Participant key={`participant = ${participant.name}`} participant={participant} tournamentName={tournamentName}/>))}
         </div>
-    )
+)
 }
 
 

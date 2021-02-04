@@ -80,4 +80,37 @@
 
 .preGameForm {
   margin-top: 5rem;
+  display: flex;
+  max-width: 1400px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.preGameInfo__column,
+.preGameInfo__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preGameInfo__column > h2 {
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.preGameInfo__form {
+  margin-top: 2rem;
+}
+
+.preGameInfo__form > input {
+  max-width: 300px;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 19px 38px transparent, 0 15px 20px rgb(0 0 0 / 10%);
+  font-size: 1.4rem;
+}
+
+.preGameInfo__form > img {
+  margin-top: 1.5rem;
 }

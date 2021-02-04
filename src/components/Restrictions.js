@@ -4,10 +4,9 @@ import {ADD_RESTRICTION, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 
 import Restriction from './Restriction';
 
-function Restrictions({restrictions, tournamentName, hidden}) {
+function Restrictions({restrictions, tournamentName}) {
 
     const [newRestriction, setNewRestriction] = useState("")
-    const [showForm, setShowForm] = useState(false)
 
     const [addRestriction] = useMutation(ADD_RESTRICTION, {
         update(proxy, result){
@@ -31,18 +30,14 @@ function Restrictions({restrictions, tournamentName, hidden}) {
     }
 
     return (
-        <div className="restrictions">
-            { !hidden && (<div className="editTournament__form-container">
-            <img onClick={() => setShowForm(prev => !prev)} className={showForm ? "form-active" : null} src="../close.svg" alt="close icon"/>
-            {showForm &&
-            (<div className="editTournament__form">
+        <div className="preGameInfo__column">
+            <h2>Restrictions</h2>
+            <div className="preGameInfo__form">
                 <input value={newRestriction} onChange={e => setNewRestriction(e.target.value)} placeholder="Restriction.." name="restriction" type="text"/>
-                <button onClick={executeAddRestriction}>Submit</button>
-            </div>)
-            }
-            </div>)}
+                <img onClick={executeAddRestriction} src="../close.svg" alt="add icon"/>
+            </div>
             {restrictions && restrictions.map(restriction => (
-                <Restriction key={`restriction = ${restriction}`} tournamentName={tournamentName} hidden={hidden} restriction={restriction}/>
+                <Restriction key={`restriction = ${restriction}`} tournamentName={tournamentName} restriction={restriction}/>
             ))}
         </div>
     )
