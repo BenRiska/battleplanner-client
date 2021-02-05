@@ -1,10 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {useMutation} from '@apollo/react-hooks';
 import {DELETE_RULE, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 
-function Rule({rule, tournamentName, hidden}) {
-
-    const [openDelete, setOpenDelete] = useState(false)
+function Rule({rule, tournamentName}) {
 
     const [deleteRule] = useMutation(DELETE_RULE, {
           update(proxy, result){
@@ -21,16 +19,9 @@ function Rule({rule, tournamentName, hidden}) {
     })
 
     return (
-        <div className="rule">
+        <div className="preGameInfo__column-item">
             <p>{rule}</p>
-            {!hidden && (<button onClick={() => setOpenDelete(prev => !prev)}>Remove</button>)}
-            {openDelete && (<div className="edit-confirm-box">
-              <p>Are you sure?</p>
-              <div className="edit-confirm">
-                <p onClick={() => setOpenDelete(prev => !prev)}>No</p>
-                <p onClick={deleteRule}>Yes</p>
-              </div>
-            </div>)}
+            <button onClick={deleteRule}>Remove</button>
         </div>
     )
 }

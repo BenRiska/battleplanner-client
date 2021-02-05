@@ -12,6 +12,8 @@ function Home() {
 
     const { user } = useContext(AuthContext);
 
+    console.log(FETCH_TOURNAMENTS_QUERY)
+
     const { loading, data: { getTournaments: tournaments } = {}} = useQuery(FETCH_TOURNAMENTS_QUERY, {
         variables: {username: user?.username}
     })

@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import {useQuery} from '@apollo/react-hooks';
 import {useParams} from 'react-router-dom';
+import {FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 import "../styles/tournament/Tournament.css"
 import NavBar from "../components/NavBar"
 import PreGameInfo from '../components/PreGameInfo';
 import TournamentPanel from '../components/TournamentPanel';
-import {FETCH_TOURNAMENT_QUERY} from "../utils/queries"
+
 
 
 function Tournament() {
@@ -15,7 +16,9 @@ function Tournament() {
 
     const {id} = useParams()
 
-    const { loading, data: { getTournament: tournament } = {}} = useQuery(FETCH_TOURNAMENT_QUERY, {
+    console.log(typeof(id), typeof("ben"))
+
+    const { loading, error, data: { getTournament: tournament } = {}} = useQuery(FETCH_TOURNAMENT_QUERY, {
       fetchPolicy: "network-only",
       onCompleted: (data) => {
         const completedFights = data?.getTournament?.fights?.filter(fight => (fight.concluded === true))
@@ -39,15 +42,19 @@ function Tournament() {
       },
       variables: {tournamentName: id}})
 
-      if(loading) return <div>loading</div>
+      if (tournament) console.log(tournament)
+
+      if(error) console.log(error)
 
     return (
+        loading ? <div>loading</div> :
         <div className="tournament">
             <NavBar alterImageRoute/>
             <div className="tournament__main">
-                {tournament?.round === 0 ? (
+                {tournament?.round === 0 && (
                   <PreGameInfo tournament={tournament}/>
-                ): (
+                )}
+                { tournament?.round > 0 && (
                   <TournamentPanel setRoundLosers={setRoundLosers} setRoundWinners={setRoundWinners} tournament={tournament}/>
                 )}
             </div>

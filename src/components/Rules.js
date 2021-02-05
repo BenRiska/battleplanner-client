@@ -35,7 +35,7 @@ function Rules({rules, tournamentName}) {
             <h2>Rules</h2>
             <div className="preGameInfo__form">
                 <input value={newRule} onChange={e => setNewRule(e.target.value)} placeholder="Rule.." name="rule" type="text"/>
-                <img onClick={executeAddRule} src="../close.svg" alt="add icon"/>
+                <img onClick={executeAddRule} src="../yellow-cross.svg" alt="add icon"/>
             </div>
             {rules && rules.map(rule => (
             <Rule key={rule} rule={rule} tournamentName={tournamentName}/>

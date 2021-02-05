@@ -53,11 +53,11 @@ function PreGameInfo({tournament}) {
     const StartTournament = () => {
         if(
             tournament?.participants.length > 1 && 
-            tournament?.participants.length % 2 === 0
+            tournament?.participants.length % 4 === 0
         ){
             StartGame()
         } else{
-            alert("Participants count must be divisible by four.")
+            alert("Participant count must be divisible by four.")
         }
     }
 
@@ -67,6 +67,8 @@ function PreGameInfo({tournament}) {
                 Delete
             </button>
 
+            <img className="preGameInfo__char" src="../configure-char.svg" alt="char img"/>
+
             <div className="preGameInfo__header">
                 <h1>Configure</h1>
                 <p>Before we start you must add the following:</p>
@@ -74,32 +76,45 @@ function PreGameInfo({tournament}) {
                     <div onClick={() => setParticipantFAQ(prev => !prev)} 
                     style={{background: participantFAQ ? "#f8faff" : ""}}
                     className="preGameInfo__tab">
-                            <h2>Participants</h2>
+                            <div className="preGameInfo__tab-title">
+                                <h2>Participants</h2>
+                                <img src="../red-info.svg" alt="info btn"/>
+                            </div>
                             {
                                 participantFAQ && 
                                 <ul>
-                                    <li>The total participant count must be divisible by 4.</li>
-                                    <li>There is no participant limit.</li>
+                                    <li>- The total participant count must be divisible by 4.</li>
+                                    <li>- There is no participant limit.</li>
                                 </ul>
                             }
                     </div>
-                    <div onClick={() => setRulesFAQ(prev => !prev)} className="preGameInfo__tab">
-                            <h2>Rules (Optional)</h2>
+                    <div onClick={() => setRulesFAQ(prev => !prev)} 
+                    style={{background: rulesFAQ ? "#f8faff" : ""}}
+                    className="preGameInfo__tab">
+                    <div className="preGameInfo__tab-title">
+                                <h2>Rules (Optional)</h2>
+                                <img src="../yellow-info.svg" alt="info btn"/>
+                            </div>
                             {
                                 rulesFAQ && 
                                 <ul>
-                                    <li>Define the rules of your tournament so other players may view it on the tournament portal.</li>
-                                    <li>There is no rule limit.</li>
+                                    <li>- Define the rules of your tournament so other players may view it on the tournament portal.</li>
+                                    <li>- There is no rule limit.</li>
                                 </ul>
                             }
                     </div>
-                    <div onClick={() => setRestrictionFAQ(prev => !prev)} className="preGameInfo__tab">
-                            <h2>Restrictions (Optional)</h2>
+                    <div onClick={() => setRestrictionFAQ(prev => !prev)}
+                    style={{background: restrictionFAQ ? "#f8faff" : ""}} 
+                    className="preGameInfo__tab">
+                    <div className="preGameInfo__tab-title">
+                                <h2>Restrictions (Optional)</h2>
+                                <img src="../green-info.svg" alt="info btn"/>
+                            </div>
                             {
                                 restrictionFAQ && 
                                 <ul>
-                                    <li>Any restrictions you have defined may be randomly generated when needed.</li>
-                                    <li>There is no restriction limit.</li>
+                                    <li>- Any restrictions you have defined may be randomly generated on request.</li>
+                                    <li>- There is no restriction limit.</li>
                                 </ul>
                             }
                     </div>

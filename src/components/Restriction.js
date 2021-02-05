@@ -1,10 +1,8 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {useMutation} from '@apollo/react-hooks';
 import {DELETE_RESTRICTION, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 
-function Restriction({restriction, tournamentName, hidden}) {
-
-  const [openDelete, setOpenDelete] = useState(false)
+function Restriction({restriction, tournamentName}) {
 
     const [deleteRestriction] = useMutation(DELETE_RESTRICTION, {
           update(proxy, result){
@@ -21,18 +19,11 @@ function Restriction({restriction, tournamentName, hidden}) {
     })
 
     return (
-        <div className="restriction">
+        <div className="preGameInfo__column-item">
             <p>
                 {restriction}
             </p>
-            {!hidden && (<button onClick={() => setOpenDelete(prev => !prev)}>Remove</button>)}
-            {openDelete && (<div className="edit-confirm-box">
-              <p>Are you sure?</p>
-              <div className="edit-confirm">
-                <p onClick={() => setOpenDelete(prev => !prev)}>No</p>
-                <p onClick={deleteRestriction}>Yes</p>
-              </div>
-            </div>)}
+            <button onClick={deleteRestriction}>Remove</button>
         </div>
     )
 }

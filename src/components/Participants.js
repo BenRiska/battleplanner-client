@@ -37,7 +37,7 @@ function Participants({participants, tournamentName}) {
             <h2>Participants</h2>
             <div className="preGameInfo__form">
                 <input value={newParticipant} onChange={e => setNewParticipant(e.target.value)} placeholder="Participant.." name="participant" type="text"/>
-                <img onClick={executeAddParticipant} src="../close.svg" alt="add icon"/>
+                <img onClick={executeAddParticipant} src="../red-cross.svg" alt="add icon"/>
             </div>
             {participants && participants.map(participant => (
                 <Participant key={`participant = ${participant.name}`} participant={participant} tournamentName={tournamentName}/>))}
