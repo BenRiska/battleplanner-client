@@ -185,3 +185,68 @@
     transform: translateX(0);
   }
 }
+
+@media only screen and (max-height: 1000px) {
+  .preGameInfo__char {
+    height: 15rem;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .preGameForm {
+    flex-direction: column;
+  }
+
+  .preGameInfo__column {
+    padding: 0 2rem;
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .preGameInfo__char {
+    display: none;
+  }
+
+  .delete-tournament-btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .preGameInfo__header > h1 {
+    font-size: 2rem;
+    margin-top: 2rem;
+    max-width: 90vh;
+  }
+
+  .preGameInfo__header > p {
+    font-size: 1.2rem;
+  }
+
+  .preGameInfo__tabs,
+  .preGameInfo__tab {
+    width: 350px;
+  }
+
+  .preGameInfo__tab-title > h2 {
+    font-size: 1.2rem;
+  }
+
+  .preGameInfo__tab-title > img {
+    height: 25px;
+  }
+
+  .preGameInfo__header > button {
+    padding: 0.5rem 3rem;
+    font-size: 1.2rem;
+  }
+
+  .preGameInfo__column > h2 {
+    font-size: 1.6rem;
+  }
+
+  .preGameInfo__form > input {
+    font-size: 1rem;
+    max-width: 400px;
+  }
+}
