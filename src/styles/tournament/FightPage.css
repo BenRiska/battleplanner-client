@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 2rem;
 }
 
 .red-btn {
@@ -43,6 +44,7 @@
   -moz-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
   border-radius: 5px;
   font-weight: 400;
+  text-align: center;
 }
 
 .fightPage__header > button,
@@ -113,6 +115,10 @@
   border-radius: 999px;
   border: 5px solid black;
   margin-top: 1rem;
+  cursor: pointer;
+  box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  -webkit-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
 }
 
 .current-fighter > p {
@@ -123,7 +129,8 @@
   cursor: pointer;
 }
 
-.current-fighter > p:hover {
+.current-fighter > p:hover,
+.current-fighter > img:hover + p {
   background-color: #2db67c !important;
   color: white !important;
 }
@@ -199,4 +206,72 @@
   text-transform: capitalize;
   border-radius: 5px;
   margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 1300px) {
+  .red-btn {
+    right: 50%;
+    transform: translateX(50%);
+    top: -5rem;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .fightPage__main-fight {
+    min-width: 800px;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .fightPage__main-fight {
+    min-width: 600px;
+  }
+
+  .fightPage__list {
+    flex-direction: column;
+  }
+
+  .fightPage__header > h1 {
+    margin: 0 2rem;
+    font-size: 3rem;
+    padding: 1rem 3rem;
+  }
+
+  .fightPage__header > button {
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .fightPage__main-fight {
+    min-width: 400px;
+  }
+
+  .vs {
+    font-size: 2rem;
+  }
+
+  .fightPage__char {
+    width: 120px;
+  }
+
+  .current-fighter > img {
+    width: 60px;
+  }
+
+  .current-fighter > p {
+    font-size: 2rem;
+  }
+
+  .winner-btn {
+    padding: 0.7rem 2rem;
+  }
+
+  .fightPage__header {
+    flex-direction: column;
+  }
+
+  .fightPage__header > h1 {
+    margin: 2rem;
+  }
 }

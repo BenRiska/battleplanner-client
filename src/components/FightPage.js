@@ -26,7 +26,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
             <div className="vs">Vs</div>
             <img className="fightPage__char" src="../fightpage-char.svg" alt="char icon"/>
             <div className="current-fighter">
-                <img src={`https://avatars.dicebear.com/api/human/${Math.floor(Math.random() * 5000)}.svg`} alt="player icon"/>
+                <img onClick={() => setSelectedWinner(currentFight?.fighterOne)} src={`https://avatars.dicebear.com/api/human/${Math.floor(Math.random() * 5000)}.svg`} alt="player icon"/>
                 <p 
                 style={{backgroundColor: selectedWinner === currentFight?.fighterOne ? "#2DB67C" : "initial",color: selectedWinner === currentFight?.fighterOne ? "white" : "black"}}
                 onClick={() => setSelectedWinner(currentFight?.fighterOne)}
@@ -35,7 +35,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                 </p>
             </div>
             <div className="current-fighter">
-                <img src={`https://avatars.dicebear.com/api/human/${Math.floor(Math.random() * 5000)}.svg`} alt="player icon"/>
+                <img onClick={() => setSelectedWinner(currentFight?.fighterTwo)} src={`https://avatars.dicebear.com/api/human/${Math.floor(Math.random() * 5000)}.svg`} alt="player icon"/>
                 <p 
                 style={
                     {backgroundColor: selectedWinner === currentFight?.fighterTwo ? "#2DB67C" : "initial",
@@ -75,11 +75,11 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                 <h2>Completed</h2>
             {completedFights?.map(fight => 
                     <div key={fight.id}>
-                        <p style={{color: fight.winner === fight.fighterOne ? "#E01E5A" :  "#2DB67C"}}>
+                        <p style={{color: fight.winner === fight.fighterOne ?  "#2DB67C" : "#E01E5A"}}>
                             {fight.fighterOne}
                         </p>
                         <span>Vs</span>
-                        <p style={{color: fight.winner === fight.fighterTwo ? "#E01E5A" :  "#2DB67C"}}>
+                        <p style={{color: fight.winner === fight.fighterTwo ?  "#2DB67C" : "#E01E5A"}}>
                             {fight.fighterTwo}
                         </p>
                     </div>
