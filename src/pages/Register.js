@@ -94,7 +94,7 @@ function Register(props) {
               <p>Privacy & Terms</p>
               <p>Created by Benjamin Taylor</p>
             </div>
-            <img src="./char1.png" alt="char logo"/>
+            <img src="./main-char.svg" alt="char logo"/>
         </div>
     )
 }

@@ -1,0 +1,143 @@
+.completedPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.completedPage > h1 {
+  padding: 2rem;
+  box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  -webkit-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  border-radius: 5px;
+  text-align: center;
+  min-width: 300px;
+  margin-bottom: 4rem;
+  width: fit-content;
+  text-transform: capitalize;
+}
+
+.completedPage > button {
+  background-color: #e01e5a;
+  padding: 0.5rem 2.5rem;
+  border: none;
+  box-shadow: 0 19px 38px transparent, 0 15px 20px rgb(0 0 0 / 10%);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.winnerCard {
+  margin: 4rem;
+  min-width: 800px;
+  box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  -webkit-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  border-radius: 5px;
+  position: relative;
+}
+
+.winnerCard > h2 {
+  padding: 2rem;
+  text-align: center;
+}
+
+.winnerCard > h2 > p {
+  margin: 1rem;
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.winnerCard > img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.completedPage > h2 {
+  font-size: 2.6rem;
+  font-weight: 500;
+}
+
+.completedPage__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  margin: 3rem 0;
+  grid-gap: 30px;
+}
+
+.completedPage__grid > div {
+  text-align: center;
+  box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  -webkit-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  -moz-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  border-radius: 5px;
+  padding: 2rem;
+  font-size: 2rem;
+}
+
+@media only screen and (max-width: 1050px) {
+  .winnerCard {
+    min-width: 600px;
+  }
+
+  .completedPage > h2 {
+    margin-top: 2rem;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .winnerCard {
+    min-width: 500px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .winnerCard {
+    min-width: 400px;
+  }
+
+  .winnerCard > img {
+    display: none;
+  }
+
+  .completedPage__grid > div {
+    font-size: 1.4rem;
+  }
+
+  .completedPage__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .winnerCard > h2 {
+    padding: 1rem;
+  }
+
+  .winnerCard > h2 > p {
+    font-size: 2rem;
+  }
+
+  .completedPage > h2 {
+    margin-top: 1rem;
+    font-size: 2rem;
+  }
+
+  .winnerCard {
+    min-width: auto;
+    padding: 1rem 3rem;
+    margin: 2rem;
+  }
+
+  .completedPage > h1 {
+    min-width: auto;
+    padding: 1rem 3rem;
+    margin: 2rem;
+  }
+
+  .completedPage__grid {
+    grid-template-columns: 1fr;
+  }
+}
