@@ -272,6 +272,16 @@
   }
 
   .fightPage__header > h1 {
-    margin: 2rem;
+    margin: 1rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .red-btn {
+    top: -3rem;
+  }
+
+  .fightPage__main-fight {
+    min-width: 90vw;
   }
 }
