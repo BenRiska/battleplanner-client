@@ -268,7 +268,9 @@
     font-size: 2rem;
   }
 
-  .winner-btn {
+  .winner-btn,
+  .fightPage__header > button,
+  .red-btn {
     padding: 0.7rem 2rem;
   }
 
