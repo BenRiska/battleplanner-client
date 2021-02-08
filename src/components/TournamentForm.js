@@ -23,7 +23,7 @@ function TournamentForm() {
         })
         setTournamentName("")
     },
-        variables: {tournamentName},
+        variables: {tournamentName: tournamentName.trim()},
         onError(err) {
           alert(err);
         }

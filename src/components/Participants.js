@@ -23,7 +23,7 @@ function Participants({participants, tournamentName}) {
         onError(err) {
             alert(err);
           },
-        variables: {tournamentName: tournamentName, name: newParticipant}
+        variables: {tournamentName: tournamentName, name: newParticipant.trim()}
     })
 
     const executeAddParticipant = () => {

@@ -20,7 +20,7 @@ function Restrictions({restrictions, tournamentName}) {
         onError(err) {
             alert(err)
           },
-        variables: {tournamentName: tournamentName, restriction: newRestriction}
+        variables: {tournamentName: tournamentName, restriction: newRestriction.trim()}
     })
 
     const executeAddRestriction = () => {

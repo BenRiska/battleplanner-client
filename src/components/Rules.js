@@ -21,7 +21,7 @@ function Rules({rules, tournamentName}) {
         onError(err) {
             alert(err);
           },
-        variables: {tournamentName: tournamentName, rule: newRule}
+        variables: {tournamentName: tournamentName, rule: newRule.trim()}
     })
 
     const executeAddRule = () => {

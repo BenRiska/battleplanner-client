@@ -52,3 +52,18 @@
   color: white;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+  .nav__box-content {
+    height: 100px;
+    width: 140px;
+  }
+  .nav__box-content > p {
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+
+  .nav__box-content > h2 {
+    font-size: 1rem;
+  }
+}
