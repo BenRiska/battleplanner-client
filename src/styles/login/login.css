@@ -118,16 +118,8 @@
   .access__footer {
     font-size: 0.8rem;
   }
-}
 
-@media only screen and (max-height: 600px) {
   .login > img {
-    display: none;
-  }
-
-  .access__footer {
-    transform: translateX(50%);
-    right: 50%;
-    width: 100%;
+    height: 100px;
   }
 }

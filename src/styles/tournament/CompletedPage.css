@@ -112,6 +112,7 @@
 @media only screen and (max-width: 700px) {
   .winnerCard {
     min-width: 400px;
+    margin: 0.5rem;
   }
 
   .winnerCard > img {
@@ -131,7 +132,7 @@
   }
 
   .winnerCard > h2 > p {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
 
   .completedPage > h2 {
@@ -141,8 +142,8 @@
 
   .winnerCard {
     min-width: auto;
-    padding: 1rem 3rem;
-    margin: 2rem;
+    padding: 1rem 2rem;
+    margin: 2rem 0.5rem;
   }
 
   .completedPage > h1 {

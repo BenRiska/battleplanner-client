@@ -21,7 +21,7 @@ function TournamentCard({tournament}) {
                         {!tournament?.active && 
                         tournament?.round > 0
                         && 
-                        <p className="complete-tab">Complete</p>
+                        <p className="complete-tab">Completed</p>
                         }
                         <Link to={`/tournament/${tournament?.name}`}>View</Link>
                     </div>
