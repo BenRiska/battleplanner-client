@@ -292,9 +292,14 @@
     flex-direction: column;
   }
 
+  .fightPage__header > button {
+    flex: 0.25;
+  }
+
   .fightPage__header > h1 {
     margin: 1rem;
     font-size: 2rem;
+    flex: 0.5;
   }
 }
 
