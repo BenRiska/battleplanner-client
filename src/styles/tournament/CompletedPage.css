@@ -30,7 +30,7 @@
 }
 
 .winnerCard {
-  margin: 4rem;
+  margin-bottom: 4rem;
   min-width: 800px;
   box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
   -webkit-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
@@ -47,7 +47,7 @@
 .winnerCard > h2 > p {
   margin: 1rem;
   font-size: 3rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .winnerCard > img {
@@ -115,6 +115,10 @@
     margin: 0.5rem;
   }
 
+  .completedPage > h1 {
+    margin-bottom: 1rem !important;
+  }
+
   .winnerCard > img {
     display: none;
   }
@@ -143,7 +147,7 @@
   .winnerCard {
     min-width: auto;
     padding: 1rem 2rem;
-    margin: 2rem 0.5rem;
+    margin: 1rem;
   }
 
   .completedPage > h1 {
@@ -154,5 +158,9 @@
 
   .completedPage__grid {
     grid-template-columns: 1fr;
+  }
+
+  .completedPage > button {
+    margin-bottom: 2rem;
   }
 }

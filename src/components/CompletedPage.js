@@ -33,7 +33,6 @@ function CompletedPage({tournament}) {
     return (
         <div className="completedPage">
             <h1>{tournament?.name}</h1>
-            <button onClick={executeDeleteTournament}>Delete</button>
             <div className="winnerCard">
                 <h2>
                     <p>Congratulations</p>
@@ -45,6 +44,7 @@ function CompletedPage({tournament}) {
             <div className="completedPage__grid">
             {tournament?.participants?.map(p => <div>{p.name}</div>)}
             </div>
+            <button onClick={executeDeleteTournament}>Delete</button>
         </div>
     )
 }

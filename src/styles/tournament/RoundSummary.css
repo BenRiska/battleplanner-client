@@ -65,3 +65,14 @@
   background-color: #d85a52;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 600px) {
+  .roundSummary {
+    margin-top: 0rem;
+  }
+
+  .winnerCard {
+    padding: 1rem 2rem !important;
+    margin: 1rem;
+  }
+}

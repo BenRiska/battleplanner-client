@@ -41,6 +41,10 @@
     height: 2.5rem;
     font-size: 1.5rem;
   }
+
+  .tournamentForm > button {
+    margin-top: 2rem;
+  }
 }
 
 @media only screen and (max-width: 450px) {

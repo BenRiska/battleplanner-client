@@ -18,7 +18,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
         <div className="fightPage">
         <div className="fightPage__header">
             <button className="rules-btn">Rules</button>
-            <h1>{tournament?.name}</h1>
+            <h1>{tournament?.name.substring(0,10)}</h1>
             <button onClick={generateRestriction} className="restriction-btn">Generate Restriction</button>
         </div>
         <div className="fightPage__main-fight">
@@ -30,7 +30,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                 style={{backgroundColor: selectedWinner === currentFight?.fighterOne ? "#2DB67C" : "initial",color: selectedWinner === currentFight?.fighterOne ? "white" : "black"}}
                 onClick={() => setSelectedWinner(currentFight?.fighterOne)}
                 >
-                    {currentFight?.fighterOne}
+                    {currentFight?.fighterOne.substring(0,5)}
                 </p>
             </div>
             <div className="current-fighter">
@@ -43,7 +43,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                 }
                 onClick={() => setSelectedWinner(currentFight?.fighterTwo)}
                 >
-                    {currentFight?.fighterTwo}
+                    {currentFight?.fighterTwo.substring(0,5)}
                 </p>
             </div>
             <button className="winner-btn" onClick={() => {
@@ -53,20 +53,14 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
             }
                 }>Winner</button>
         </div>
-        <div className="fightPage__stats">
-        <div className="fightPage__round-card">
-                <span>Final</span>
-                <span>{tournament?.fights?.length * 2}</span>
-            </div>
-        </div>
         <div className="fightPage__list">
             <div className="fightPage__upcoming">
                 <h2>Upcoming</h2>
                 {remainingFights?.map(fight => 
                     <div key={fight.id}>
-                        <p>{fight.fighterOne}</p>
+                        <p>{fight.fighterOne.substring(0,5)}</p>
                         <span>Vs</span>
-                        <p>{fight.fighterTwo}</p>
+                        <p>{fight.fighterTwo.substring(0,5)}</p>
                     </div>
                 )}
             </div>
@@ -75,11 +69,11 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
             {completedFights?.map(fight => 
                     <div key={fight.id}>
                         <p style={{color: fight.winner === fight.fighterOne ?  "#2DB67C" : "#E01E5A"}}>
-                            {fight.fighterOne}
+                            {fight.fighterOne.substring(0,5)}
                         </p>
                         <span>Vs</span>
                         <p style={{color: fight.winner === fight.fighterTwo ?  "#2DB67C" : "#E01E5A"}}>
-                            {fight.fighterTwo}
+                            {fight.fighterTwo.substring(0,5)}
                         </p>
                     </div>
                 )}

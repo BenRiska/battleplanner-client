@@ -72,9 +72,10 @@
 @media only screen and (max-width: 400px) {
   .tournamentCard {
     padding: 1.5rem 0.5rem;
+    height: 230px;
   }
 
   .tournamentCard__info {
-    padding: 1.5rem 1rem 1rem 2rem;
+    padding: 1rem 1rem 1rem 2rem;
   }
 }
