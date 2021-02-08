@@ -16,7 +16,6 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
 
     return (
         <div className="fightPage">
-        <button className="red-btn" onClick={executeDeleteTournament}>End Tournament</button>
         <div className="fightPage__header">
             <button className="rules-btn">Rules</button>
             <h1>{tournament?.name}</h1>
@@ -86,6 +85,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                 )}
             </div>
         </div>
+        <button className="red-btn" onClick={executeDeleteTournament}>End Tournament</button>
     </div>
     )
 }
