@@ -63,10 +63,6 @@ function PreGameInfo({tournament}) {
 
     return (
         <div className="preGameInfo">
-            <button className="delete-tournament-btn" onClick={deleteTournament}>
-                Delete
-            </button>
-
             <img className="preGameInfo__char" src="../configure-char.svg" alt="char img"/>
 
             <div className="preGameInfo__header">
@@ -122,6 +118,9 @@ function PreGameInfo({tournament}) {
                 <button onClick={StartTournament} className="start-tournament-btn">
                 Start
                 </button>
+                <button className="delete-tournament-btn" onClick={deleteTournament}>
+                Delete
+            </button>
             </div>
             <div className="preGameForm">
                 <Participants tournamentName={tournament?.name} participants={tournament?.participants}/>

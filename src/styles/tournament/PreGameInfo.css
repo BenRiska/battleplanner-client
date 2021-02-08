@@ -5,14 +5,11 @@
   justify-content: center;
   position: relative;
   width: 100%;
-  margin-top: 2rem;
 }
 
 .delete-tournament-btn {
-  position: absolute;
-  right: 2rem;
-  top: -2rem;
-  background-color: #e01e5a;
+  background-color: #e01e5a !important;
+  margin-top: 1rem !important;
   padding: 0.5rem 2.5rem;
   border: none;
   box-shadow: 0 19px 38px transparent, 0 15px 20px rgb(0 0 0 / 10%);
@@ -36,6 +33,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 90vw;
 }
 
 .preGameInfo__header > h1 {
@@ -47,6 +45,7 @@
   margin-top: 2.5rem;
   opacity: 0.6;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 .preGameInfo__tabs {
@@ -91,7 +90,8 @@
 }
 
 .preGameInfo__header > button {
-  padding: 0.5rem 5rem;
+  padding: 0.5rem;
+  width: 200px;
   border: none;
   border-radius: 5px;
   margin-top: 2rem;
@@ -104,7 +104,7 @@
 }
 
 .preGameForm {
-  margin-top: 5rem;
+  margin: 2rem 0;
   display: flex;
   max-width: 1400px;
   width: 100%;
