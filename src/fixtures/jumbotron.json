@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "name": "dummy1",
+      "username": "ben",
+      "round": 1,
+      "active": true,
+      "winner": "",
+      "participants": [{"id": 1, "name": "ben", "status": true }, {"id": 2, "name": "henry","status": true }, {"id": 3, "name": "joe","status": true }, {"id": 4, "name": "john","status": true }],
+      "rules": ["no yellow", "no green"],
+      "restrictions": ["no blue", "no red"],
+      "fights": [{"id": 1, "concluded": false, "fighterOne": "ben", "fighterTwo": "henry"}, {"id": 2, "concluded": false, "fighterOne": "joe", "fighterTwo": "john"} ]
+    },
+    {
+        "id": 2,
+        "name": "dummy2",
+        "username": "ben",
+        "round": 0,
+        "active": true,
+        "winner": "",
+        "participants": [{"id": 1, "name": "ben", "status": true }, {"id": 2, "name": "henry","status": true }, {"id": 3, "name": "joe","status": true }, {"id": 4, "name": "john","status": true }],
+        "rules": ["no yellow", "no green"],
+        "restrictions": ["no blue", "no red"],
+        "fights": []
+    },
+    {
+        "id": 3,
+        "name": "dummy3",
+        "username": "ben",
+        "round": 2,
+        "active": false,
+        "winner": "ben",
+        "participants": [{"id": 1, "name": "ben", "status": true }, {"id": 2, "name": "henry","status": true }, {"id": 3, "name": "joe","status": true }, {"id": 4, "name": "john","status": true }],
+        "rules": ["no yellow", "no green"],
+        "restrictions": ["no blue", "no red"],
+        "fights": [{"id": 1, "concluded": true, "fighterOne": "ben", "fighterTwo": "john"}]
+    }
+  ]
