@@ -79,6 +79,20 @@
   font-size: 2rem;
 }
 
+@media only screen and (max-width: 1300px) {
+  .completedPage > h1 {
+    margin-bottom: 2rem;
+  }
+
+  .winnerCard {
+    margin: 2rem;
+  }
+
+  .completedPage__grid {
+    margin: 2rem 0;
+  }
+}
+
 @media only screen and (max-width: 1050px) {
   .winnerCard {
     min-width: 600px;
