@@ -16,6 +16,7 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-test-renderer": "^17.0.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
@@ -47,17 +48,15 @@
       "<rootDir>/src/**/*.js",
       "!<rootDir>/src/app.js",
       "!<rootDir>/src/helpers/routes.js",
-      "!<rootDir>/src/lib/firebase.js",
-      "!<rootDir>/src/lib/firebase.prod.js",
       "!<rootDir>/src/index.js",
       "!<rootDir>/src/seed.js",
       "!<rootDir>/src/utils/index.js",
       "!<rootDir>/src/pages/index.js",
-      "!<rootDir>/src/global-styles.js",
+      "!<rootDir>/src/ApolloProvider.js",
       "!<rootDir>/src/reportWebVitals.js",
       "!<rootDir>/src/components/index.js",
-      "!<rootDir>/src/firebase.prod.js",
-      "!<rootDir>/src/hooks/*.js",
+      "!<rootDir>/src/utils/hooks/*.js",
+      "!<rootDir>/src/utils/queries/*.js",
       "!<rootDir>/src/context/*.js"
     ],
     "coverageThreshold": {
