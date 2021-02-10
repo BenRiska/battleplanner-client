@@ -51,6 +51,11 @@
   box-shadow: 0 19px 38px transparent, 0 15px 20px rgb(0 0 0 / 10%);
   color: white;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.nav__box-content > p:hover {
+  transform: scale(1.03) translateY(-1px);
 }
 
 @media only screen and (max-width: 600px) {

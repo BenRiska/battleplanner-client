@@ -9,6 +9,11 @@
   flex-direction: column;
   align-items: center;
   padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tournamentCard:hover {
+  transform: scale(1.04) translateY(-2px);
 }
 
 .tournamentCard > h2 {
@@ -67,6 +72,12 @@
 .tournamentCard__right > a {
   background-color: var(--main-light-color);
   margin-top: 1.5rem;
+  box-shadow: 0 7px 15px rgba(73, 130, 252, 0.15), 0 7px 7px rgba(0, 0, 0, 0);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.tournamentCard__right > a:hover {
+  transform: scale(1.04) translateY(-2px);
 }
 
 @media only screen and (max-width: 400px) {

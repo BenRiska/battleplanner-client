@@ -39,7 +39,7 @@ mutation register(
 export const FETCH_TOURNAMENTS_QUERY = gql`
 query ($username: String!){
 getTournaments(username: $username){
-  id
+id
 name
 username
 rules

@@ -16,6 +16,11 @@
   box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
   -webkit-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
   -moz-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.roundSummary__content:hover {
+  transform: scale(1.02) translateY(-2px);
 }
 
 .roundSummary__content > h2 {
@@ -41,6 +46,11 @@
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 19px 38px transparent, 0 15px 20px rgb(0 0 0 / 10%);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.roundSummary__content > button:hover {
+  transform: scale(1.04) translateY(-2px);
 }
 
 .winners__card > h2 {

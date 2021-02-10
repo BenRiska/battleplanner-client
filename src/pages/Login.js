@@ -27,6 +27,7 @@ function Login(props) {
       props.history.push('/');
     },
     onError(err) {
+      console.log(err)
       alert(
         err.graphQLErrors[0].extensions.exception.errors["general"],
         err.graphQLErrors[0].extensions.exception.errors["username"],
