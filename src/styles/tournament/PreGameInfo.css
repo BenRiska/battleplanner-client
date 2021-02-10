@@ -10,7 +10,7 @@
 .delete-tournament-btn {
   background-color: #e01e5a !important;
   margin-top: 1rem !important;
-  padding: 0.5rem 2.5rem;
+  padding: 0.5rem;
   border: none;
   box-shadow: 0 19px 38px transparent, 0 15px 20px rgb(0 0 0 / 10%);
   border-radius: 5px;
@@ -18,6 +18,12 @@
   cursor: pointer;
   font-size: 1.2rem;
   font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 200px;
+}
+
+.delete-tournament-btn:hover {
+  transform: scale(1.04) translateY(-2px);
 }
 
 .preGameInfo__char {
@@ -98,7 +104,7 @@
   margin-top: 2rem;
   background-color: #495464;
   color: white;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 500;
   cursor: pointer;
   box-shadow: 0 19px 38px transparent, 0 15px 20px rgb(0 0 0 / 10%);
