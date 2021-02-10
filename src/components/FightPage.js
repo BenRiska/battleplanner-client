@@ -89,7 +89,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                             currentFight?.fighterTwo}</p>
                     </div>
                 )}
-                {remainingFights.length === 0 && <div>No fights remaining.</div>}
+                {remainingFights?.length === 0 && <div>No fights remaining.</div>}
             </div>
             }
             {listState === "completed" && 
@@ -113,7 +113,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                         </p>
                     </div>
                 )}
-                {completedFights.length === 0 && <div>No fights completed yet.</div>}
+                {completedFights?.length === 0 && <div>No fights completed yet.</div>}
             </div>}
         </div>
         <button className="red-btn" onClick={executeDeleteTournament}>End Tournament</button>
