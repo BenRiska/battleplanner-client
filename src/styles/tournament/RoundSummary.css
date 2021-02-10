@@ -78,11 +78,11 @@
 
 @media only screen and (max-width: 600px) {
   .roundSummary {
-    margin-top: 0rem;
+    margin-top: -2rem;
   }
 
   .winnerCard {
-    padding: 1rem 2rem !important;
+    padding: 0rem 2rem !important;
     margin: 1rem;
   }
 }

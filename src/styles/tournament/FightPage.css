@@ -16,9 +16,11 @@
   border-radius: 5px;
   color: white;
   cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin: 2rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  height: 50px;
+  margin: 1rem 0;
+  margin-bottom: 2rem;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -28,19 +30,15 @@
 
 .fightPage__header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-}
-
-.fightPage__header > h1,
-.fightPage__header > button {
-  flex: 0.33;
 }
 
 .fightPage__header > h1 {
   font-size: 4rem;
   text-transform: capitalize;
   margin: 0 5rem;
+  margin-bottom: 1rem;
   padding: 1rem 5rem;
   box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
   -webkit-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
@@ -54,18 +52,24 @@
   text-overflow: ellipsis;
 }
 
-.fightPage__header > button,
+.fightPage__button-container {
+  display: flex;
+  align-items: center;
+}
+
+.fightPage__button-container > button,
 .winner-btn {
   padding: 0.5rem 2.5rem;
-  height: 60px;
-  width: 250px;
+  margin: 1rem;
+  height: 50px;
+  width: 200px;
   border: none;
   box-shadow: 0 19px 38px transparent, 0 15px 20px rgb(0 0 0 / 10%);
   border-radius: 5px;
   color: white;
   cursor: pointer;
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -83,8 +87,8 @@
 
 .fightPage__main-fight {
   display: flex;
-  margin-top: 5rem;
-  padding: 2rem 0;
+  margin-top: 1rem;
+  padding: 1rem 0;
   position: relative;
   min-width: 1000px;
   justify-content: space-between;
@@ -162,6 +166,7 @@
   height: auto;
   background-color: #2db67c;
   font-weight: 600;
+  margin: 0;
 }
 
 .winner-btn:hover {
@@ -195,7 +200,7 @@
   max-width: 1200px;
   width: 100%;
   justify-content: space-around;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .fightPage__upcoming,
@@ -210,7 +215,7 @@
 .fightPage__completed > h2 {
   font-size: 3rem;
   font-weight: 400;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .fightPage__upcoming > div,
@@ -263,9 +268,17 @@
 }
 
 @media only screen and (max-width: 650px) {
+  .fightPage {
+    margin-top: -2rem;
+  }
   .fightPage__main-fight {
     min-width: 400px;
     margin-top: 2rem;
+  }
+
+  .fightPage__button-container > button {
+    width: 150px;
+    margin: 0.5rem;
   }
 
   .fightPage__stats,
@@ -311,6 +324,11 @@
   .fightPage__header > button,
   .red-btn {
     padding: 0.7rem 2rem;
+  }
+
+  .winner-btn {
+    width: 150px;
+    margin: 0;
   }
 
   .fightPage__header {

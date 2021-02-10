@@ -146,7 +146,8 @@
 }
 
 .preGameInfo__form > img {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
   height: 50px;
   cursor: pointer;
   border-radius: 999px;
@@ -220,6 +221,9 @@
 }
 
 @media only screen and (max-width: 900px) {
+  .preGameInfo {
+    top: -30px;
+  }
   .preGameInfo__char {
     display: none;
   }
@@ -264,5 +268,16 @@
   .preGameInfo__form > input {
     font-size: 1rem;
     max-width: 400px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .preGameInfo__form > input {
+    font-size: 1rem;
+    max-width: 200px;
+  }
+
+  .preGameInfo__column > h2 {
+    margin: 1rem;
   }
 }

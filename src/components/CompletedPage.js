@@ -32,17 +32,26 @@ function CompletedPage({tournament}) {
 
     return (
         <div className="completedPage">
-            <h1>{tournament?.name}</h1>
+            <h1>{tournament?.name?.length > 14 ? 
+              tournament?.name?.slice(0, 14) + ".." 
+              :
+              tournament?.name}</h1>
             <div className="winnerCard">
                 <h2>
                     <p>Congratulations</p>
-                    <p>{tournament?.winner}!</p>
+                    <p>{tournament?.winner?.length > 10 ? 
+              tournament?.winner?.slice(0, 10) + ".." 
+              :
+              tournament?.winner}!</p>
                 </h2>
                 <img src="../main-char.svg" alt="char logo"/>
             </div>
             <h2>Participants</h2>
             <div className="completedPage__grid">
-            {tournament?.participants?.map(p => <div>{p.name}</div>)}
+            {tournament?.participants?.map(p => <div>{p?.name?.length > 10 ? 
+              p?.name?.slice(0, 14) + ".." 
+              :
+              p?.name}</div>)}
             </div>
             <button onClick={executeDeleteTournament}>Delete</button>
         </div>

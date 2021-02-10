@@ -135,6 +135,7 @@
 
   .completedPage__grid > div {
     font-size: 1.4rem;
+    margin: 0rem 1rem;
   }
 
   .completedPage__grid {

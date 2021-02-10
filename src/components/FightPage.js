@@ -17,9 +17,14 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
     return (
         <div className="fightPage">
         <div className="fightPage__header">
+            <h1>{tournament?.name?.length > 14 ? 
+              tournament?.name?.slice(0, 14) + "..." 
+              :
+              tournament?.name}</h1>
+            <div className="fightPage__button-container">
             <button className="rules-btn">Rules</button>
-            <h1>{tournament?.name.substring(0,10)}</h1>
             <button onClick={generateRestriction} className="restriction-btn">Generate Restriction</button>
+            </div>
         </div>
         <div className="fightPage__main-fight">
             <div className="vs">Vs</div>
@@ -30,7 +35,10 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                 style={{backgroundColor: selectedWinner === currentFight?.fighterOne ? "#2DB67C" : "initial",color: selectedWinner === currentFight?.fighterOne ? "white" : "black"}}
                 onClick={() => setSelectedWinner(currentFight?.fighterOne)}
                 >
-                    {currentFight?.fighterOne.substring(0,5)}
+                    {currentFight?.fighterOne?.length > 6 ? 
+              currentFight?.fighterOne?.slice(0, 6) + ".." 
+              :
+              currentFight.fighterOne?.name}
                 </p>
             </div>
             <div className="current-fighter">
@@ -43,12 +51,17 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                 }
                 onClick={() => setSelectedWinner(currentFight?.fighterTwo)}
                 >
-                    {currentFight?.fighterTwo.substring(0,5)}
+                    {currentFight?.fighterTwo?.length > 6 ? 
+              currentFight?.fighterTwo?.slice(0, 6) + ".." 
+              :
+              currentFight.fighterTwo?.name}
                 </p>
             </div>
             <button className="winner-btn" onClick={() => {
                 if(selectedWinner.length > 0){
                     executeEndFight(selectedWinner)
+                } else{
+                    alert("You must select a winner.")
                 }
             }
                 }>Winner</button>
@@ -58,9 +71,15 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                 <h2>Upcoming</h2>
                 {remainingFights?.map(fight => 
                     <div key={fight.id}>
-                        <p>{fight.fighterOne.substring(0,5)}</p>
+                        <p>{currentFight?.fighterOne?.length > 6 ? 
+              currentFight?.fighterOne?.slice(0, 6) + ".." 
+              :
+              currentFight.fighterOne?.name}</p>
                         <span>Vs</span>
-                        <p>{fight.fighterTwo.substring(0,5)}</p>
+                        <p>{currentFight?.fighterTwo?.length > 6 ? 
+              currentFight?.fighterTwo?.slice(0, 6) + ".." 
+              :
+              currentFight.fighterTwo?.name}</p>
                     </div>
                 )}
             </div>
@@ -69,11 +88,17 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
             {completedFights?.map(fight => 
                     <div key={fight.id}>
                         <p style={{color: fight.winner === fight.fighterOne ?  "#2DB67C" : "#E01E5A"}}>
-                            {fight.fighterOne.substring(0,5)}
+                        {currentFight?.fighterOne?.length > 6 ? 
+              currentFight?.fighterOne?.slice(0, 6) + ".." 
+              :
+              currentFight.fighterOne?.name}
                         </p>
                         <span>Vs</span>
                         <p style={{color: fight.winner === fight.fighterTwo ?  "#2DB67C" : "#E01E5A"}}>
-                            {fight.fighterTwo.substring(0,5)}
+                        {currentFight?.fighterTwo?.length > 6 ? 
+              currentFight?.fighterTwo?.slice(0, 6) + ".." 
+              :
+              currentFight.fighterTwo?.name}
                         </p>
                     </div>
                 )}
