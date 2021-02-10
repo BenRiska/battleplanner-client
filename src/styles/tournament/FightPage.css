@@ -165,7 +165,7 @@
 }
 
 .winner-btn:hover {
-  transform: scale(1.02) translateX(-50%);
+  transform: scale(1.02) translateX(-49%);
 }
 
 .fightPage__stats {
