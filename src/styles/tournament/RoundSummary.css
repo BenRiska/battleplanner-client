@@ -78,7 +78,7 @@
 
 @media only screen and (max-width: 600px) {
   .roundSummary {
-    margin-top: -2rem;
+    margin-top: 0rem;
   }
 
   .winnerCard {
