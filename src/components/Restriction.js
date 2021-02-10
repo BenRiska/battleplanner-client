@@ -21,7 +21,10 @@ function Restriction({restriction, tournamentName}) {
     return (
         <div className="preGameInfo__column-item">
             <p>
-                {restriction}
+            {restriction?.length > 14 ? 
+              restriction?.slice(0, 14) + "..." 
+              :
+              restriction}
             </p>
             <button onClick={deleteRestriction}>Remove</button>
         </div>

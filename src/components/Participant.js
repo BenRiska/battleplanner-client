@@ -26,8 +26,8 @@ function Participant({participant, tournamentName}) {
     return (
         <div className="preGameInfo__column-item">
             <p>
-              {participant?.name?.length > 20 ? 
-              participant?.name?.slice(0, 20) + "..." 
+              {participant?.name?.length > 14 ? 
+              participant?.name?.slice(0, 14) + "..." 
               :
               participant?.name}
             </p>

@@ -20,7 +20,10 @@ function Rule({rule, tournamentName}) {
 
     return (
         <div className="preGameInfo__column-item">
-            <p>{rule}</p>
+            <p>{rule?.length > 14 ? 
+              rule?.slice(0, 14) + "..." 
+              :
+              rule}</p>
             <button onClick={deleteRule}>Remove</button>
         </div>
     )

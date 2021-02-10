@@ -5,7 +5,8 @@ import "../styles/home/TournamentCard.css"
 function TournamentCard({tournament}) {
         return (
         <div className="tournamentCard">
-                <h2>{tournament?.name}</h2>
+                <h2>{tournament?.name.length > 8 ? 
+                tournament?.name?.slice(0,8) + ".." : tournament?.name}</h2>
                 <div className="tournamentCard__info">
                     <div className="tournamentCard__left">
                         <img src="./team-icon.svg" alt="team icon"/>
