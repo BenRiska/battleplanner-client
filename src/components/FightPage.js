@@ -38,7 +38,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                     {currentFight?.fighterOne?.length > 6 ? 
               currentFight?.fighterOne?.slice(0, 6) + ".." 
               :
-              currentFight.fighterOne?.name}
+              currentFight?.fighterOne?.name}
                 </p>
             </div>
             <div className="current-fighter">
@@ -54,7 +54,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                     {currentFight?.fighterTwo?.length > 6 ? 
               currentFight?.fighterTwo?.slice(0, 6) + ".." 
               :
-              currentFight.fighterTwo?.name}
+              currentFight?.fighterTwo?.name}
                 </p>
             </div>
             <button className="winner-btn" onClick={() => {
@@ -74,12 +74,12 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                         <p>{currentFight?.fighterOne?.length > 6 ? 
               currentFight?.fighterOne?.slice(0, 6) + ".." 
               :
-              currentFight.fighterOne?.name}</p>
+              currentFight?.fighterOne?.name}</p>
                         <span>Vs</span>
                         <p>{currentFight?.fighterTwo?.length > 6 ? 
               currentFight?.fighterTwo?.slice(0, 6) + ".." 
               :
-              currentFight.fighterTwo?.name}</p>
+              currentFight?.fighterTwo?.name}</p>
                     </div>
                 )}
             </div>
@@ -91,14 +91,14 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                         {currentFight?.fighterOne?.length > 6 ? 
               currentFight?.fighterOne?.slice(0, 6) + ".." 
               :
-              currentFight.fighterOne?.name}
+              currentFight?.fighterOne?.name}
                         </p>
                         <span>Vs</span>
                         <p style={{color: fight.winner === fight.fighterTwo ?  "#2DB67C" : "#E01E5A"}}>
                         {currentFight?.fighterTwo?.length > 6 ? 
               currentFight?.fighterTwo?.slice(0, 6) + ".." 
               :
-              currentFight.fighterTwo?.name}
+              currentFight?.fighterTwo?.name}
                         </p>
                     </div>
                 )}

@@ -59,7 +59,7 @@
 
 .fightPage__button-container > button,
 .winner-btn {
-  padding: 0.5rem 2.5rem;
+  padding: 0 1rem;
   margin: 1rem;
   height: 50px;
   width: 200px;
@@ -71,6 +71,7 @@
   font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-align: center;
 }
 
 .fightPage__header > button:hover {
