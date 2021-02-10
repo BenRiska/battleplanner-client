@@ -4,6 +4,7 @@ import "../styles/tournament/FightPage.css"
 function FightPage({tournament, currentFight, remainingFights, completedFights, executeEndFight, executeDeleteTournament}) {
 
     const [selectedWinner, setSelectedWinner] = useState("")
+    const [listState, setListState] = useState("upcoming")
 
     const generateRestriction = () => {
         if(tournament.restrictions.length > 0){
@@ -38,7 +39,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                     {currentFight?.fighterOne?.length > 6 ? 
               currentFight?.fighterOne?.slice(0, 6) + ".." 
               :
-              currentFight?.fighterOne?.name}
+              currentFight?.fighterOne}
                 </p>
             </div>
             <div className="current-fighter">
@@ -54,7 +55,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                     {currentFight?.fighterTwo?.length > 6 ? 
               currentFight?.fighterTwo?.slice(0, 6) + ".." 
               :
-              currentFight?.fighterTwo?.name}
+              currentFight?.fighterTwo}
                 </p>
             </div>
             <button className="winner-btn" onClick={() => {
@@ -66,43 +67,54 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
             }
                 }>Winner</button>
         </div>
+        <div className="fightPage__list-select">
+            <span style={{opacity: listState !== "upcoming" ? 0.6 : 1}} onClick={() => setListState("upcoming")}>Upcoming</span>
+            <span style={{opacity: listState !== "completed" ? 0.6 : 1}} onClick={() => setListState("completed")}>Completed</span>
+        </div>
         <div className="fightPage__list">
+            {listState === "upcoming" && 
             <div className="fightPage__upcoming">
-                <h2>Upcoming</h2>
                 {remainingFights?.map(fight => 
                     <div key={fight.id}>
-                        <p>{currentFight?.fighterOne?.length > 6 ? 
-              currentFight?.fighterOne?.slice(0, 6) + ".." 
-              :
-              currentFight?.fighterOne?.name}</p>
-                        <span>Vs</span>
-                        <p>{currentFight?.fighterTwo?.length > 6 ? 
-              currentFight?.fighterTwo?.slice(0, 6) + ".." 
-              :
-              currentFight?.fighterTwo?.name}</p>
+                        {console.log(currentFight.fighterOne)}
+                        <p>
+                            {currentFight?.fighterOne?.length > 6 ? 
+                            currentFight?.fighterOne?.slice(0, 6) + ".." 
+                            :
+                            currentFight?.fighterOne}</p>
+                                        <span>Vs</span>
+                                        <p>{currentFight?.fighterTwo?.length > 6 ? 
+                            currentFight?.fighterTwo?.slice(0, 6) + ".." 
+                            :
+                            currentFight?.fighterTwo}</p>
                     </div>
                 )}
+                {remainingFights.length === 0 && <div>No fights remaining.</div>}
             </div>
+            }
+            {listState === "completed" && 
             <div className="fightPage__completed">
-                <h2>Completed</h2>
             {completedFights?.map(fight => 
                     <div key={fight.id}>
-                        <p style={{color: fight.winner === fight.fighterOne ?  "#2DB67C" : "#E01E5A"}}>
-                        {currentFight?.fighterOne?.length > 6 ? 
-              currentFight?.fighterOne?.slice(0, 6) + ".." 
-              :
-              currentFight?.fighterOne?.name}
-                        </p>
-                        <span>Vs</span>
+                        <p 
+                        style={{color: fight.winner === fight.fighterOne ?  "#2DB67C" : "#E01E5A"}}
+                        >
+                            {currentFight?.fighterOne?.length > 6 ? 
+                            currentFight?.fighterOne?.slice(0, 6) + ".." 
+                            :
+                            currentFight?.fighterOne}
+                                        </p>
+                                        <span>Vs</span>
                         <p style={{color: fight.winner === fight.fighterTwo ?  "#2DB67C" : "#E01E5A"}}>
-                        {currentFight?.fighterTwo?.length > 6 ? 
-              currentFight?.fighterTwo?.slice(0, 6) + ".." 
-              :
-              currentFight?.fighterTwo?.name}
+                            {currentFight?.fighterTwo?.length > 6 ? 
+                            currentFight?.fighterTwo?.slice(0, 6) + ".." 
+                            :
+                            currentFight?.fighterTwo}
                         </p>
                     </div>
                 )}
-            </div>
+                {completedFights.length === 0 && <div>No fights completed yet.</div>}
+            </div>}
         </div>
         <button className="red-btn" onClick={executeDeleteTournament}>End Tournament</button>
     </div>

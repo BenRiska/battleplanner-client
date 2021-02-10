@@ -34,7 +34,6 @@ function Participants({participants, tournamentName}) {
 
     return (
         <div className="preGameInfo__column">
-            <h2>Participants</h2>
             <div className="preGameInfo__form">
                 <input value={newParticipant} onChange={e => setNewParticipant(e.target.value)} placeholder="Participant.." name="participant" type="text"/>
                 <img onClick={executeAddParticipant} src="../red-cross.svg" alt="add icon"/>

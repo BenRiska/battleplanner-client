@@ -16,6 +16,7 @@ function PreGameInfo({tournament}) {
     const [participantFAQ, setParticipantFAQ] = useState(false)
     const [rulesFAQ, setRulesFAQ] = useState(false)
     const [restrictionFAQ, setRestrictionFAQ] = useState(false)
+    const [formState, setFormState] = useState("participant")
 
     const history = useHistory()
 
@@ -119,10 +120,23 @@ function PreGameInfo({tournament}) {
                 Start
                 </button>
             </div>
+            <div className="preGame__form-options">
+                <span 
+                style={{opacity: formState !== "participant" ? 0.6 : 1}} 
+                onClick={() => setFormState("participant")}>Participants</span>
+                <span 
+                style={{opacity: formState !== "rule" ? 0.6 : 1}}
+                onClick={() => setFormState("rule")}>Rules</span>
+                <span 
+                style={{opacity: formState !== "restriction" ? 0.6 : 1}}
+                onClick={() => setFormState("restriction")}>Restrictions</span>
+            </div>
             <div className="preGameForm">
-                <Participants tournamentName={tournament?.name} participants={tournament?.participants}/>
-                <Rules tournamentName={tournament?.name} rules={tournament?.rules}/>
-                <Restrictions tournamentName={tournament?.name} restrictions={tournament?.restrictions}/>
+                {formState === "participant" && <Participants tournamentName={tournament?.name} participants={tournament?.participants}/>}
+
+                {formState === "rule" && <Rules tournamentName={tournament?.name} rules={tournament?.rules}/>}
+
+                {formState === "restriction" && <Restrictions tournamentName={tournament?.name} restrictions={tournament?.restrictions}/>}
             </div>
             <button className="delete-tournament-btn" onClick={deleteTournament}>
                 Delete

@@ -120,22 +120,33 @@
 }
 
 @media only screen and (max-width: 700px) {
+  .completedPage {
+    margin-top: -2rem;
+  }
   .winnerCard {
     min-width: 400px;
     margin: 0.5rem;
+    padding: 0 !important;
   }
 
   .completedPage > h1 {
-    margin-bottom: 1rem !important;
+    margin: 1rem !important;
   }
 
   .winnerCard > img {
     display: none;
   }
 
+  .completedPage__grid {
+    grid-gap: 15px;
+    margin: 1.5rem 0;
+  }
+
   .completedPage__grid > div {
     font-size: 1.4rem;
     margin: 0rem 1rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
   }
 
   .completedPage__grid {
@@ -151,8 +162,8 @@
   }
 
   .completedPage > h2 {
-    margin-top: 1rem;
-    font-size: 2rem;
+    margin-top: 0.5rem;
+    font-size: 1.6rem;
   }
 
   .winnerCard {

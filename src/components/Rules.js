@@ -32,7 +32,6 @@ function Rules({rules, tournamentName}) {
 
     return (
         <div className="preGameInfo__column">
-            <h2>Rules</h2>
             <div className="preGameInfo__form">
                 <input value={newRule} onChange={e => setNewRule(e.target.value)} placeholder="Rule.." name="rule" type="text"/>
                 <img onClick={executeAddRule} src="../yellow-cross.svg" alt="add icon"/>

@@ -31,7 +31,6 @@ function Restrictions({restrictions, tournamentName}) {
 
     return (
         <div className="preGameInfo__column">
-            <h2>Restrictions</h2>
             <div className="preGameInfo__form">
                 <input value={newRestriction} onChange={e => setNewRestriction(e.target.value)} placeholder="Restriction.." name="restriction" type="text"/>
                 <img onClick={executeAddRestriction} src="../green-cross.svg" alt="add icon"/>

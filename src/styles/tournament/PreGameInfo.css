@@ -9,7 +9,7 @@
 
 .delete-tournament-btn {
   background-color: #e01e5a !important;
-  margin-top: 1rem !important;
+  margin-top: 10rem !important;
   padding: 0.5rem;
   border: none;
   box-shadow: 0 19px 38px transparent, 0 15px 20px rgb(0 0 0 / 10%);
@@ -116,25 +116,24 @@
 }
 
 .preGameForm {
-  margin: 2rem 0;
   display: flex;
   max-width: 1400px;
   width: 100%;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 }
 
 .preGameInfo__column {
-  flex: 0.33;
   width: 100%;
-  margin: 0 3rem;
+  max-width: 700px;
+  margin: 2rem;
 }
-
-.preGameInfo__column,
 .preGameInfo__form {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-top: 2rem;
 }
 
 .preGameInfo__column > h2 {
@@ -172,9 +171,7 @@
   justify-content: space-between;
   width: 100%;
   font-size: 1.2rem;
-  box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
-  -webkit-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
-  -moz-box-shadow: 1px 6px 9px 1px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 19px 38px transparent, 0 15px 20px rgb(0 0 0 / 10%);
   border-radius: 10px;
   font-weight: bold;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -197,15 +194,52 @@
   font-weight: bold;
 }
 
+.preGame__form-options {
+  display: flex;
+  padding-top: 2rem;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 700px;
+}
+
+.preGame__form-options > span {
+  font-size: 1.6rem;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem;
+  color: white;
+  font-weight: bold;
+  flex: 0.33;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.preGame__form-options > span:hover {
+  transform: scale(1.02) translateY(-2px);
+}
+
+.preGame__form-options > span:nth-child(1) {
+  background-color: #e01e5a;
+}
+
+.preGame__form-options > span:nth-child(2) {
+  background-color: #f5af0a;
+}
+
+.preGame__form-options > span:nth-child(3) {
+  background-color: #2db67c;
+}
+
 @keyframes hide-char {
   0% {
-    transform: translateX(0);
+    transform: translateX(0) rotate(0deg);
   }
   50% {
-    transform: translateX(-500px);
+    transform: translateX(-500px) rotate(-50deg);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(0) rotate(0deg);
   }
 }
 
@@ -229,6 +263,15 @@
 @media only screen and (max-width: 900px) {
   .preGameInfo {
     top: -30px;
+  }
+
+  .preGame__form-options {
+    max-width: 400px;
+  }
+  .preGame__form-options > span {
+    font-size: 1rem;
+    margin: 0.5rem;
+    padding: 0.7rem 0.5rem;
   }
   .preGameInfo__char {
     display: none;
@@ -285,5 +328,14 @@
 
   .preGameInfo__column > h2 {
     margin: 1rem;
+  }
+
+  .preGame__form-options {
+    max-width: 320px;
+  }
+  .preGame__form-options > span {
+    font-size: 1rem;
+    margin: 0.2rem;
+    padding: 0.7rem 0.5rem;
   }
 }
