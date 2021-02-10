@@ -12,11 +12,11 @@ function Home() {
 
     const { user } = useContext(AuthContext);
 
-    console.log(FETCH_TOURNAMENTS_QUERY)
-
-    const { loading, data: { getTournaments: tournaments } = {}} = useQuery(FETCH_TOURNAMENTS_QUERY, {
+    const { loading,error, data: { getTournaments: tournaments } = {}} = useQuery(FETCH_TOURNAMENTS_QUERY, {
         variables: {username: user?.username}
     })
+
+    if(error) console.log(error)
 
     return (
         <div className="home"> 
