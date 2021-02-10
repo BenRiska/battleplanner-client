@@ -25,7 +25,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
             <div className="vs">Vs</div>
             <img className="fightPage__char" src="../fightpage-char.svg" alt="char icon"/>
             <div className="current-fighter">
-                <img onClick={() => setSelectedWinner(currentFight?.fighterOne)} src={`https://avatars.dicebear.com/api/human/${Math.floor(Math.random() * 5000)}.svg`} alt="player icon"/>
+                <img onClick={() => setSelectedWinner(currentFight?.fighterOne)} src={"../fighter1.png"} alt="player icon"/>
                 <p 
                 style={{backgroundColor: selectedWinner === currentFight?.fighterOne ? "#2DB67C" : "initial",color: selectedWinner === currentFight?.fighterOne ? "white" : "black"}}
                 onClick={() => setSelectedWinner(currentFight?.fighterOne)}
@@ -34,7 +34,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
                 </p>
             </div>
             <div className="current-fighter">
-                <img onClick={() => setSelectedWinner(currentFight?.fighterTwo)} src={`https://avatars.dicebear.com/api/human/${Math.floor(Math.random() * 5000)}.svg`} alt="player icon"/>
+                <img onClick={() => setSelectedWinner(currentFight?.fighterTwo)} src={"../fighter2.png"} alt="player icon"/>
                 <p 
                 style={
                     {backgroundColor: selectedWinner === currentFight?.fighterTwo ? "#2DB67C" : "initial",
