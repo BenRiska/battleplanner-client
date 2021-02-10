@@ -94,7 +94,7 @@ function PreGameInfo({tournament}) {
                             {
                                 rulesFAQ && 
                                 <ul>
-                                    <li>- Define the rules of your tournament so other players may view it on the tournament portal.</li>
+                                    <li>- Define the rules of your tournament so other players can view them.</li>
                                     <li>- There is no rule limit.</li>
                                 </ul>
                             }
@@ -109,7 +109,7 @@ function PreGameInfo({tournament}) {
                             {
                                 restrictionFAQ && 
                                 <ul>
-                                    <li>- Any restrictions you have defined may be randomly generated on request.</li>
+                                    <li>- Any restrictions you have defined can be randomly generated.</li>
                                     <li>- There is no restriction limit.</li>
                                 </ul>
                             }
