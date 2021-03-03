@@ -1,5 +1,6 @@
 import React, { useContext,} from 'react';
 import { useQuery } from '@apollo/react-hooks';
+import { motion } from "framer-motion"
 import "../styles/home/home.css"
 import {FETCH_TOURNAMENTS_QUERY} from "../utils/queries"
 
@@ -7,6 +8,7 @@ import { AuthContext } from '../context/auth';
 import Navbar from "../components/NavBar"
 import TournamentForm from '../components/TournamentForm';
 import TournamentCard from '../components/TournamentCard';
+import {stagger} from "../utils/animations"
 
 function Home() {
 
@@ -19,23 +21,26 @@ function Home() {
     if(error) console.log(error)
 
     return (
-        <div className="home"> 
+        <motion.div exit={{opacity: 0}} initial="initial" animate="animate" className="home"> 
             <Navbar/>
             <TournamentForm/>
             {loading ? (
-                <div>
-                    <h2>Loading</h2>
+                <div style={{marginTop: "5rem"}} class="spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
             )
             : 
             (
-                <div className="home__grid">
+                <motion.div variants={stagger} className="home__grid">
                 {tournaments?.map(tournament => <TournamentCard key={tournament?.name} tournament={tournament}/>)
                 }
-               </div>
+               </motion.div>
             )
             }
-        </div>
+        </motion.div>
     )
 }
 

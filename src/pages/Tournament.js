@@ -1,6 +1,7 @@
 import React from 'react'
 import {useQuery} from '@apollo/react-hooks';
 import {useParams} from 'react-router-dom';
+import { motion } from "framer-motion"
 import {FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 import "../styles/tournament/Tournament.css"
 import NavBar from "../components/NavBar"
@@ -21,7 +22,7 @@ function Tournament() {
 
     return (
         loading ? <div>loading</div> :
-        <div className="tournament">
+        <motion.div exit={{opacity: 0}} initial="initial" animate="animate" className="tournament">
             <NavBar alterImageRoute />
             <div className="tournament__main">
                 {tournament?.round === 0 && (
@@ -31,7 +32,7 @@ function Tournament() {
                   <TournamentPanel tournament={tournament}/>
                 )}
             </div>
-        </div>
+        </motion.div>
     )
 }
 

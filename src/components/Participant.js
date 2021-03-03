@@ -1,6 +1,8 @@
 import React from 'react'
 import {useMutation} from '@apollo/react-hooks';
+import { motion } from "framer-motion"
 import {DELETE_PARTICIPANT, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
+import {fadeInUpMin} from "../utils/animations"
 
 function Participant({participant, tournamentName}) {
 
@@ -24,7 +26,7 @@ function Participant({participant, tournamentName}) {
 
 
     return (
-        <div className="preGameInfo__column-item">
+        <motion.div variants={fadeInUpMin}className="preGameInfo__column-item">
             <p>
               {participant?.name?.length > 14 ? 
               participant?.name?.slice(0, 14) + "..." 
@@ -32,7 +34,7 @@ function Participant({participant, tournamentName}) {
               participant?.name}
             </p>
             <button onClick={deleteParticipant}>Remove</button>
-        </div>
+        </motion.div>
     )
 }
 

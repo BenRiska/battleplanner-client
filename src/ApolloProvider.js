@@ -5,6 +5,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { setContext } from 'apollo-link-context';
+import {AnimatePresence} from "framer-motion"
 
 const httpLink = createHttpLink({
   uri: 'https://immense-refuge-36502.herokuapp.com/'
@@ -26,6 +27,8 @@ const client = new ApolloClient({
 
 export default (
   <ApolloProvider client={client}>
-    <App />
+    <AnimatePresence exitBeforeEnter>
+      <App />
+    </AnimatePresence>
   </ApolloProvider>
 );

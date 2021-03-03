@@ -1,14 +1,16 @@
 import React, {useState} from 'react'
 import Participant from './Participant'
+import { motion } from "framer-motion"
 import { useMutation} from '@apollo/react-hooks';
 import {FETCH_TOURNAMENT_QUERY, ADD_PARTICIPANT} from "../utils/queries"
+import {stagger} from "../utils/animations"
 
 
 function Participants({participants, tournamentName}) {
 
     const [newParticipant, setNewParticipant] = useState("")
 
-    const [addParticipant] = useMutation(ADD_PARTICIPANT, {
+    const [addParticipant, {loading: mutationLoading}] = useMutation(ADD_PARTICIPANT, {
         update(proxy, result){
             proxy.writeQuery({
                 query: FETCH_TOURNAMENT_QUERY,
@@ -33,14 +35,22 @@ function Participants({participants, tournamentName}) {
     }
 
     return (
-        <div className="preGameInfo__column">
+        <motion.div variants={stagger} exit={{ opacity: 0 }} className="preGameInfo__column">
             <div className="preGameInfo__form">
                 <input value={newParticipant} onChange={e => setNewParticipant(e.target.value)} placeholder="Participant.." name="participant" type="text"/>
-                <img onClick={executeAddParticipant} src="../red-cross.svg" alt="add icon"/>
+                <motion.img whileTap={{ scale: 0.95 }} onClick={executeAddParticipant} src="../red-cross.svg" alt="add icon"/>
             </div>
+            {mutationLoading &&(
+                <div style={{marginTop: "1rem"}} class="spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            )}
             {participants && participants.map(participant => (
                 <Participant key={`participant = ${participant.name}`} participant={participant} tournamentName={tournamentName}/>))}
-        </div>
+        </motion.div>
 )
 }
 

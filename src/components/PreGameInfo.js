@@ -2,12 +2,13 @@ import React, {useContext, useState} from 'react'
 import {useMutation} from '@apollo/react-hooks';
 import {useHistory} from "react-router-dom"
 import { AuthContext } from '../context/auth';
+import { motion } from "framer-motion"
 import "../styles/tournament/PreGameInfo.css"
 import {START_GAME_QUERY, DELETE_TOURNAMENT_QUERY, FETCH_TOURNAMENTS_QUERY, FETCH_TOURNAMENT_QUERY} from "../utils/queries"
 import Participants from './Participants';
 import Rules from "./Rules"
 import Restrictions from "./Restrictions"
-
+import {fadeInUpMin, stagger} from "../utils/animations"
 
 function PreGameInfo({tournament}) {
 
@@ -63,14 +64,14 @@ function PreGameInfo({tournament}) {
     }
 
     return (
-        <div className="preGameInfo">
+        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }} className="preGameInfo">
             <img className="preGameInfo__char" src="../configure-char.svg" alt="char img"/>
 
-            <div className="preGameInfo__header">
-                <h1>Configure</h1>
-                <p>Before we start you must add the following:</p>
+            <motion.div variants={stagger} className="preGameInfo__header">
+                <motion.h1 variants={fadeInUpMin}>Configure</motion.h1>
+                <motion.p variants={fadeInUpMin}>Before we start you must add the following:</motion.p>
                 <div className="preGameInfo__tabs">
-                    <div onClick={() => setParticipantFAQ(prev => !prev)} 
+                    <motion.div variants={fadeInUpMin} whileTap={{ scale: 0.95 }} onClick={() => setParticipantFAQ(prev => !prev)} 
                     style={{background: participantFAQ ? "#f8faff" : ""}}
                     className="preGameInfo__tab">
                             <div className="preGameInfo__tab-title">
@@ -84,8 +85,8 @@ function PreGameInfo({tournament}) {
                                     <li>- There is no participant limit.</li>
                                 </ul>
                             }
-                    </div>
-                    <div onClick={() => setRulesFAQ(prev => !prev)} 
+                    </motion.div>
+                    <motion.div variants={fadeInUpMin} whileTap={{ scale: 0.95 }} onClick={() => setRulesFAQ(prev => !prev)} 
                     style={{background: rulesFAQ ? "#f8faff" : ""}}
                     className="preGameInfo__tab">
                     <div className="preGameInfo__tab-title">
@@ -99,8 +100,8 @@ function PreGameInfo({tournament}) {
                                     <li>- There is no rule limit.</li>
                                 </ul>
                             }
-                    </div>
-                    <div onClick={() => setRestrictionFAQ(prev => !prev)}
+                    </motion.div>
+                    <motion.div variants={fadeInUpMin} whileTap={{ scale: 0.95 }} onClick={() => setRestrictionFAQ(prev => !prev)}
                     style={{background: restrictionFAQ ? "#f8faff" : ""}} 
                     className="preGameInfo__tab">
                     <div className="preGameInfo__tab-title">
@@ -114,23 +115,23 @@ function PreGameInfo({tournament}) {
                                     <li>- There is no restriction limit.</li>
                                 </ul>
                             }
-                    </div>
+                    </motion.div>
                 </div>
-                <button onClick={StartTournament} className="start-tournament-btn">
+                <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} variants={fadeInUpMin} onClick={StartTournament} className="start-tournament-btn">
                 Start
-                </button>
-            </div>
-            <div className="preGame__form-options">
-                <span 
+                </motion.button>
+            </motion.div>
+            <motion.div variants={stagger} className="preGame__form-options">
+                <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} variants={fadeInUpMin}
                 style={{opacity: formState !== "participant" ? 0.6 : 1}} 
-                onClick={() => setFormState("participant")}>Participants</span>
-                <span 
+                onClick={() => setFormState("participant")}>Participants</motion.span>
+                <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} variants={fadeInUpMin}
                 style={{opacity: formState !== "rule" ? 0.6 : 1}}
-                onClick={() => setFormState("rule")}>Rules</span>
-                <span 
+                onClick={() => setFormState("rule")}>Rules</motion.span>
+                <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} variants={fadeInUpMin}
                 style={{opacity: formState !== "restriction" ? 0.6 : 1}}
-                onClick={() => setFormState("restriction")}>Restrictions</span>
-            </div>
+                onClick={() => setFormState("restriction")}>Restrictions</motion.span>
+            </motion.div>
             <div className="preGameForm">
                 {formState === "participant" && <Participants tournamentName={tournament?.name} participants={tournament?.participants}/>}
 
@@ -141,7 +142,7 @@ function PreGameInfo({tournament}) {
             <button className="delete-tournament-btn" onClick={deleteTournament}>
                 Delete
             </button>
-        </div>
+        </motion.div>
     )
 }
 

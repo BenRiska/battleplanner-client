@@ -2,7 +2,28 @@ import React, { useState, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { AuthContext } from '../context/auth';
 import "../styles/home/TournamentForm.css"
+import { motion } from "framer-motion"
 import {CREATE_TOURNAMENT, FETCH_TOURNAMENTS_QUERY} from "../utils/queries"
+
+// Our custom easing
+let easing = [0.6, -0.05, 0.01, 0.99];
+
+// Custom variant
+const fadeInUp = {
+    initial: {
+      y: 60,
+      opacity: 0,
+      transition: { duration: 0.6, ease: easing }
+    },
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: easing
+      }
+    }
+  };
 
 function TournamentForm() {
 
@@ -36,11 +57,11 @@ function TournamentForm() {
       }
 
     return (
-        <div className="tournamentForm">
+        <motion.div variants={fadeInUp} className="tournamentForm">
                 <img src="./home-char.svg" alt="home character icon"/>
                 <input value={tournamentName} onChange={e => setTournamentName(e.target.value)}  placeholder="  Tournament Name.." name="name" type="text"/>
                 <button onClick={e => executeQuery(e)}>Create</button>
-        </div>
+        </motion.div>
     )
 }
 
