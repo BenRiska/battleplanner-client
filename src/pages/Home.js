@@ -25,7 +25,7 @@ function Home() {
             <Navbar/>
             <TournamentForm/>
             {loading ? (
-                <div style={{marginTop: "5rem"}} class="spinner">
+                <div style={{marginTop: "10rem"}} class="spinner">
                     <div></div>
                     <div></div>
                     <div></div>

@@ -60,7 +60,7 @@ function TournamentForm() {
         <motion.div variants={fadeInUp} className="tournamentForm">
                 <img src="./home-char.svg" alt="home character icon"/>
                 <input value={tournamentName} onChange={e => setTournamentName(e.target.value)}  placeholder="  Tournament Name.." name="name" type="text"/>
-                <button onClick={e => executeQuery(e)}>Create</button>
+                <motion.button whileTap={{scale: 0.95}} whileHover={{scale: 1.05}} onClick={e => executeQuery(e)}>Create</motion.button>
         </motion.div>
     )
 }

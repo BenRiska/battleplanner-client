@@ -2,9 +2,11 @@
 import React, {useContext} from 'react'
 import {useMutation} from '@apollo/react-hooks';
 import {useHistory} from "react-router-dom"
+import { motion } from "framer-motion"
 import { AuthContext } from '../context/auth';
 import {DELETE_TOURNAMENT_QUERY, FETCH_TOURNAMENTS_QUERY} from "../utils/queries"
 import "../styles/tournament/CompletedPage.css"
+import {fadeInUpMin, stagger} from "../utils/animations"
 
 function CompletedPage({tournament}) {
 
@@ -31,12 +33,12 @@ function CompletedPage({tournament}) {
     }
 
     return (
-        <div className="completedPage">
-            <h1>{tournament?.name?.length > 14 ? 
+        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }} className="completedPage">
+            <motion.h1 variants={fadeInUpMin} >{tournament?.name?.length > 14 ? 
               tournament?.name?.slice(0, 14) + ".." 
               :
-              tournament?.name}</h1>
-            <div className="winnerCard">
+              tournament?.name}</motion.h1>
+            <motion.div variants={fadeInUpMin} className="winnerCard">
                 <h2>
                     <p>Congratulations</p>
                     <p>{tournament?.winner?.length > 10 ? 
@@ -45,16 +47,16 @@ function CompletedPage({tournament}) {
               tournament?.winner}!</p>
                 </h2>
                 <img src="../main-char.svg" alt="char logo"/>
-            </div>
-            <h2>Participants</h2>
-            <div className="completedPage__grid">
-            {tournament?.participants?.map(p => <div>{p?.name?.length > 10 ? 
+            </motion.div>
+            <motion.h2 variants={fadeInUpMin} >Participants</motion.h2>
+            <motion.div variants={stagger} className="completedPage__grid">
+            {tournament?.participants?.map(p => <motion.div variants={fadeInUpMin} >{p?.name?.length > 10 ? 
               p?.name?.slice(0, 14) + ".." 
               :
-              p?.name}</div>)}
-            </div>
-            <button onClick={executeDeleteTournament}>Delete</button>
-        </div>
+              p?.name}</motion.div>)}
+            </motion.div>
+            <motion.button whileHover={{scale: 1.05}} whileTap={{scale: 0.95}} variants={fadeInUpMin}  onClick={executeDeleteTournament}>Delete</motion.button>
+        </motion.div>
     )
 }
 

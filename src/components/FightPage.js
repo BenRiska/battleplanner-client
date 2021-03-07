@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
+import { motion } from "framer-motion"
 import "../styles/tournament/FightPage.css"
+import {fadeInUpMin, stagger} from "../utils/animations"
 
 function FightPage({tournament, currentFight, remainingFights, completedFights, executeEndFight, executeDeleteTournament}) {
 
@@ -16,7 +18,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
     }
 
     return (
-        <div className="fightPage">
+        <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }} className="fightPage">
         <div className="fightPage__header">
             <h1>{tournament?.name?.length > 14 ? 
               tournament?.name?.slice(0, 14) + "..." 
@@ -117,7 +119,7 @@ function FightPage({tournament, currentFight, remainingFights, completedFights, 
             </div>}
         </div>
         <button className="red-btn" onClick={executeDeleteTournament}>End Tournament</button>
-    </div>
+    </motion.div>
     )
 }
 

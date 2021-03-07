@@ -1,8 +1,10 @@
 import React, { useContext} from 'react';
 import { useMutation } from '@apollo/react-hooks';
+import { motion } from "framer-motion"
 import "../styles/register/register.css"
 import {Link} from "react-router-dom"
 import {REGISTER_USER} from "../utils/queries"
+import {fadeInUpMin, stagger, fadeIn} from "../utils/animations"
 
 import { AuthContext } from '../context/auth';
 import { useForm } from '../utils/hooks';
@@ -42,22 +44,22 @@ function Register(props) {
       }
 
     return (
-        <div className="register">
+        <motion.div  initial="initial" animate="animate" exit={{ opacity: 0 }} className="register">
             <div className="access__header">
               <img src="./bp-logo.svg" alt="app logo"/>
               <h1>Clash Generator</h1>
             </div>
-            <form>
-                <h2>Create an account</h2>
-                <div className="register__input">
+            <motion.form variants={stagger}>
+                <motion.h2 variants={fadeInUpMin}>Create an account</motion.h2>
+                <motion.div variants={fadeInUpMin} className="register__input">
                     <input
                     placeholder="  Username.."
                     name="username"
                     value={values.username}
                     onChange={onChange} 
                     type="text"/>
-                </div>
-                <div className="register__input">
+                </motion.div>
+                <motion.div variants={fadeInUpMin} className="register__input">
                     
                     <input 
                     placeholder="  Email.."
@@ -65,8 +67,8 @@ function Register(props) {
                     value={values.email}
                     onChange={onChange} 
                     type="email"/>
-                </div>
-                <div className="register__input">
+                </motion.div>
+                <motion.div variants={fadeInUpMin} className="register__input">
                     
                     <input 
                     placeholder="  Password.."
@@ -74,8 +76,8 @@ function Register(props) {
                     value={values.password}
                     onChange={onChange} 
                     type="password"/>
-                </div>
-                <div className="register__input">
+                </motion.div>
+                <motion.div variants={fadeInUpMin} className="register__input">
                     
                     <input 
                     placeholder="  Confirm Password.."
@@ -83,19 +85,19 @@ function Register(props) {
                     value={values.confirmPassword}
                     onChange={onChange} 
                     type="password"/>
-                </div>
-                <button onClick={onSubmit}>Register</button>
-            </form>
-            <div className="toggle__access">
+                </motion.div>
+                <motion.button whileTap={{ scale: 0.95 }} variants={fadeInUpMin} onClick={onSubmit}>Register</motion.button>
+            </motion.form>
+            <motion.div variants={fadeIn} className="toggle__access">
             <p>Already have an account?</p>
-            <Link to="/login">Sign In</Link>
-            </div>
+            <Link  to="/login">Sign In</Link>
+            </motion.div>
             <div className="access__footer">
               <p>Privacy & Terms</p>
               <p>Created by Benjamin Taylor</p>
             </div>
             <img src="./main-char.svg" alt="char logo"/>
-        </div>
+        </motion.div>
     )
 }
 

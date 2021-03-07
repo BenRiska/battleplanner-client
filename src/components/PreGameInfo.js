@@ -65,9 +65,8 @@ function PreGameInfo({tournament}) {
 
     return (
         <motion.div initial='initial' animate='animate' exit={{ opacity: 0 }} className="preGameInfo">
-            <img className="preGameInfo__char" src="../configure-char.svg" alt="char img"/>
-
-            <motion.div variants={stagger} className="preGameInfo__header">
+            <motion.div variants={stagger}>
+            <motion.div className="preGameInfo__header">
                 <motion.h1 variants={fadeInUpMin}>Configure</motion.h1>
                 <motion.p variants={fadeInUpMin}>Before we start you must add the following:</motion.p>
                 <div className="preGameInfo__tabs">
@@ -142,6 +141,7 @@ function PreGameInfo({tournament}) {
             <button className="delete-tournament-btn" onClick={deleteTournament}>
                 Delete
             </button>
+            </motion.div>
         </motion.div>
     )
 }

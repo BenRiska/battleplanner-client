@@ -21,7 +21,12 @@ function Tournament() {
     if (error) alert(error)
 
     return (
-        loading ? <div>loading</div> :
+        loading ? <div style={{marginTop: "10rem"}} class="spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div> :
         <motion.div exit={{opacity: 0}} initial="initial" animate="animate" className="tournament">
             <NavBar alterImageRoute />
             <div className="tournament__main">
